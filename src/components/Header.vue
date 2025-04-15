@@ -28,7 +28,7 @@ onBeforeUnmount(() => {
     <div class="container">
       <div class="row justify-content-between alinhar-itens-no-centro">
         <router-link to="/" class="logo-link">
-          <img src="../assets/images/logo.png" alt="Logo NB" class="logo-img" />
+          <img src="/images/logo.png" alt="Logo NB" class="logo-img" />
         </router-link>
 
         <div class="menu" @click="menuAberto = !menuAberto">

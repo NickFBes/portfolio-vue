@@ -193,3 +193,36 @@ onMounted(() => {
 
 
 </style>
+
+
+
+/* Botões de navegação do Swiper */
+.swiper-button-next,
+.swiper-button-prev {
+  color: var(--cor-primaria);
+  width: 50px;
+  height: 50px;
+  background: rgba(0, 0, 0, 0.6);
+  border: 2px solid var(--cor-primaria);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.3s ease;
+  backdrop-filter: blur(4px);
+  box-shadow: 0 0 10px var(--cor-primaria);
+}
+
+.swiper-button-next:hover,
+.swiper-button-prev:hover {
+  
+  
+  box-shadow: 0 0 15px var(--cor-primaria), 0 0 30px var(--cor-secundaria);
+}
+
+/* Ícones das setas (ajustar se estiver usando setas como imagens) */
+.swiper-button-next::after,
+.swiper-button-prev::after {
+  font-size: 20px;
+  font-weight: bold;
+}

@@ -1,7 +1,38 @@
 <script setup>
-import { onMounted } from 'vue'
+import { onMounted, ref } from 'vue'
 import Swiper from 'swiper/bundle'
 import 'swiper/css/bundle'
+
+const projetos = ref([
+  {
+    id: 1,
+    titulo: 'Projet 1',
+    imagem: '/images/projet1.png',
+    descricao: 'Projet réalisé en utilisant HTML, CSS et JavaScript.',
+    link: 'https://github.com/seuusuario/projet1'
+  },
+  {
+    id: 2,
+    titulo: 'Projet 2',
+    imagem: '/images/projet2.png',
+    descricao: 'Projet Vue avec API et Firebase.',
+    link: 'https://github.com/seuusuario/projet2'
+  },
+  {
+    id: 3,
+    titulo: 'Projet 3',
+    imagem: '/images/projet3.png',
+    descricao: 'Projet de portfolio professionnel.',
+    link: 'https://github.com/seuusuario/projet3'
+  },
+  {
+    id: 4,
+    titulo: 'Projet 4',
+    imagem: '/images/projet4.png',
+    descricao: 'Projet fullstack avec Node.js et MongoDB.',
+    link: 'https://github.com/seuusuario/projet4'
+  }
+])
 
 onMounted(() => {
   new Swiper('.slider-wrapper', {
@@ -42,12 +73,16 @@ onMounted(() => {
 
     <div class="swiper slider-wrapper">
       <div class="swiper-wrapper container-projetos">
-        <div class="swiper-slide projeto" v-for="n in 4" :key="n">
-          <a href="https://github.com">
-            <img :src="`/images/projet${n}.png`" :alt="`Projet ${n}`" />
-            <h3>Projet {{ n }}</h3>
+        <div
+          class="swiper-slide projeto"
+          v-for="projeto in projetos"
+          :key="projeto.id"
+        >
+          <a :href="projeto.link" target="_blank">
+            <img :src="projeto.imagem" :alt="projeto.titulo" />
+            <h3>{{ projeto.titulo }}</h3>
             <div class="informacoes-projeto">
-              <p>Projet réalisé en utilisant HTML, CSS et JavaScript.</p>
+              <p>{{ projeto.descricao }}</p>
               <p>🔗 Ver no GitHub Pages</p>
             </div>
           </a>
@@ -71,7 +106,6 @@ onMounted(() => {
   font-family: var(--fonte-primaria);
 }
 
-/* Swiper container */
 .swiper {
   width: 100%;
   max-width: 1140px;
@@ -103,7 +137,7 @@ onMounted(() => {
   display: block;
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
-  max-height: 260px;
+  max-height: 420px;
   object-fit: cover;
 }
 
@@ -115,7 +149,7 @@ onMounted(() => {
 }
 
 .projeto h3 {
-  font-size: 2rem;
+  font-size: 2.2rem;
   font-weight: 600;
   background-color: var(--cor-fundo-escuro);
   width: 100%;
@@ -128,7 +162,37 @@ onMounted(() => {
   margin-top: 10px;
 }
 
-/* Responsivo */
+/* Botões de navegação do Swiper */
+.swiper-button-next,
+.swiper-button-prev {
+  color: var(--cor-primaria);
+  width: 50px;
+  height: 50px;
+  background: rgba(0, 0, 0, 0.6);
+  border: 2px solid var(--cor-primaria);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.3s ease;
+  backdrop-filter: blur(4px);
+  box-shadow: 0 0 10px var(--cor-primaria);
+}
+
+.swiper-button-next:hover,
+.swiper-button-prev:hover {
+  
+  
+  box-shadow: 0 0 15px var(--cor-primaria), 0 0 30px var(--cor-secundaria);
+}
+
+/* Ícones das setas (ajustar se estiver usando setas como imagens) */
+.swiper-button-next::after,
+.swiper-button-prev::after {
+  font-size: 20px;
+  font-weight: bold;
+}
+
 @media (max-width: 768px) {
   .projeto {
     max-width: 90%;
