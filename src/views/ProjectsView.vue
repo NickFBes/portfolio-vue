@@ -7,28 +7,28 @@ const projetos = ref([
   {
     id: 1,
     titulo: 'Projet 1',
-    imagem: '/images/projet1.png',
+    imagem: `${import.meta.env.BASE_URL}images/projet1.png`,
     descricao: 'Projet réalisé en utilisant HTML, CSS et JavaScript.',
     link: 'https://github.com/seuusuario/projet1'
   },
   {
     id: 2,
     titulo: 'Projet 2',
-    imagem: '/images/projet2.png',
+    imagem: `${import.meta.env.BASE_URL}images/projet2.png`,
     descricao: 'Projet Vue avec API et Firebase.',
     link: 'https://github.com/seuusuario/projet2'
   },
   {
     id: 3,
     titulo: 'Projet 3',
-    imagem: '/images/projet3.png',
+    imagem: `${import.meta.env.BASE_URL}images/projet3.png`,
     descricao: 'Projet de portfolio professionnel.',
-    link: 'https://github.com/seuusuario/projet3'
+    link: 'https://github.com/seuusuario/projet4'
   },
   {
     id: 4,
     titulo: 'Projet 4',
-    imagem: '/images/projet4.png',
+    imagem: `${import.meta.env.BASE_URL}images/projet4.png`,
     descricao: 'Projet fullstack avec Node.js et MongoDB.',
     link: 'https://github.com/seuusuario/projet4'
   }
