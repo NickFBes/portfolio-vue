@@ -24,6 +24,10 @@ const routes = [
       path: '/projetos',
       name: 'Projetos',
       component: ProjectsView
+    },
+    {
+      path: '/:catchAll(.*)',
+      redirect: '/'
     }
   ]
   
