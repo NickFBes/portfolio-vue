@@ -11,7 +11,7 @@ html {
   
   body, #app {
     height: 100%;
-    background-color: var(--cor-fundo-cinza-escuro);
+    
     font-family: var(--fonte-primaria);
     font-size: var(--fonte-normal);
   }

@@ -17,7 +17,7 @@
         </div>
         <div class="informacoes-sobre-mim">
           <p>
-            Bonjour ! Je m'appelle Nicolas Bes et je suis un développeur web en formation ! J'aime BEAUCOUP le domaine de la technologie, et je suis sûr que je peux contribuer à n'importe quelle équipe avec mes compétences.
+            Bonjour ! Je m'appelle Nicolas Bes et je suis un développeur web en formation ! J'aime BEAUCOUP le domaine de la technologie.
           </p>
           <p>
             Je me mets toujours au défi avec de nouveaux projets et je participe à des communautés de programmation pour obtenir des retours d'autres développeurs et développeuses. J'aime ÉNORMÉMENT le domaine de la technologie. 😁

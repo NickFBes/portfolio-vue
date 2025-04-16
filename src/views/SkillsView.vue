@@ -1,47 +1,21 @@
 <script setup>
-import { onMounted } from 'vue'
+import { ref } from 'vue'
 
-onMounted(() => {
-  const informacoes = document.querySelectorAll('.informacoes')
-  const container = document.querySelector('.container-habilidades')
+const habilidades = ref([
+  { titulo: 'JavaScript', icone: 'devicon devicon-javascript-plain', descricao: 'Manipulation dynamique et logique de programmation avancée.' },
+  { titulo: 'HTML5', icone: 'devicon devicon-html5-plain-wordmark', descricao: 'Création de structures sémantiques et accessibles.' },
+  { titulo: 'CSS3', icone: 'devicon devicon-css3-plain-wordmark', descricao: 'Stylisation moderne, animations et réactivité.' },
+  { titulo: 'GitHub', icone: 'devicon devicon-github-original', descricao: 'Versionnage et collaboration sur des projets open source.' },
+  { titulo: 'Git', icone: 'devicon devicon-git-plain', descricao: 'Contrôle des versions et flux de développement.' },
+  { titulo: 'Vue.js', icone: 'devicon devicon-vuejs-plain', descricao: 'Framework JavaScript progressif pour interfaces modernes.' },
+  { titulo: 'PHP', icone: 'devicon devicon-php-plain', descricao: 'Développement back-end et logique des serveurs.' },
+  { titulo: 'MySQL', icone: 'devicon devicon-mysql-plain-wordmark', descricao: 'Base de données relationnelle et requêtes SQL.' }
+])
 
-  informacoes.forEach((item) => {
-    item.addEventListener('click', () => {
-      const isAtivo = item.classList.contains('ativo')
+const ativoIndex = ref(null)
 
-      informacoes.forEach((el) => el.classList.remove('ativo'))
-      container.classList.remove('bloqueado')
-
-      if (!isAtivo) {
-        item.classList.add('ativo')
-        container.classList.add('bloqueado')
-
-        setTimeout(() => {
-          item.scrollIntoView({ behavior: 'smooth', block: 'center' })
-        }, 300)
-      }
-    })
-  })
-})
-  
-</script>
-
-<script>
-export default {
-  data() {
-    return {
-      habilidades: [
-        { titulo: 'JavaScript', icone: 'devicon devicon-javascript-plain', descricao: 'Manipulação dinâmica e lógica de programação avançada.' },
-        { titulo: 'HTML5', icone: 'devicon devicon-html5-plain-wordmark', descricao: 'Criação de estruturas semânticas e acessíveis.' },
-        { titulo: 'CSS3', icone: 'devicon devicon-css3-plain-wordmark', descricao: 'Estilização moderna, animações e responsividade.' },
-        { titulo: 'GitHub', icone: 'devicon devicon-github-original', descricao: 'Versionamento e colaboração em projetos open source.' },
-        { titulo: 'Git', icone: 'devicon devicon-git-plain', descricao: 'Controle de versões e fluxo de desenvolvimento.' },
-        { titulo: 'Vue.js', icone: 'devicon devicon-vuejs-plain', descricao: 'Framework JavaScript progressivo para interfaces modernas.' },
-        { titulo: 'PHP', icone: 'devicon devicon-php-plain', descricao: 'Desenvolvimento back-end e lógica de servidores.' },
-        { titulo: 'MySQL', icone: 'devicon devicon-mysql-plain-wordmark', descricao: 'Banco de dados relacional e consultas SQL.' }
-      ]
-    }
-  }
+const toggleCard = (index) => {
+  ativoIndex.value = ativoIndex.value === index ? null : index
 }
 </script>
 
@@ -53,14 +27,44 @@ export default {
       </div>
 
       <div class="container-habilidades">
-        <div class="informacoes" v-for="(habilidade, index) in habilidades" :key="index">
-          <div class="logo">
-            <i :class="habilidade.icone"></i>
+        <div
+          v-for="(habilidade, index) in habilidades"
+          :key="index"
+          class="card-wrapper"
+        >
+          <div
+            @click="toggleCard(index)"
+            v-motion
+            :initial="{ opacity: 0, y: 60 }"
+            :enter="{
+              opacity: 1,
+              y: 0,
+              transition: {
+                duration: 800,
+                easing: 'ease-out'
+              }
+            }"
+            class="informacoes"
+            :class="{ ativo: ativoIndex === index }"
+          >
+            <div class="logo">
+              <i :class="habilidade.icone"></i>
+            </div>
+            <h3>{{ habilidade.titulo }}</h3>
+
+            <transition name="fade-slide">
+              <p v-if="ativoIndex === index">{{ habilidade.descricao }}</p>
+            </transition>
           </div>
-          <h3>{{ habilidade.titulo }}</h3>
-          <p>{{ habilidade.descricao }}</p>
         </div>
       </div>
+
+      <!-- Backdrop opcional -->
+      <div
+        v-if="ativoIndex !== null"
+        class="backdrop"
+        @click="ativoIndex = null"
+      ></div>
     </div>
   </section>
 </template>
@@ -68,8 +72,9 @@ export default {
 <style scoped>
 .habilidades.section {
   background-color: var(--cor-fundo-escuro);
-  padding: 80px 20px;
+  padding: 5rem 2rem;
   color: var(--cor-branca);
+  position: relative;
 }
 
 .section-title h2 {
@@ -86,27 +91,66 @@ export default {
   flex-wrap: wrap;
   gap: 30px;
   justify-content: center;
+}
+
+.card-wrapper {
+  flex: 0 1 260px;
   position: relative;
 }
 
 .informacoes {
-  flex: 0 1 260px;
-  background-color: var(--cor-fundo-cinza-claro);
-  border-radius: 15px;
+  background: linear-gradient(145deg, var(--cor-fundo-cinza-claro), #1e1e1e);
+  border: 1px solid rgba(1, 183, 255, 0.2);
+  border-radius: 20px;
   padding: 30px 20px;
   text-align: center;
-  box-shadow: 0 0 8px rgba(1, 183, 255, 0.1);
+  box-shadow:
+    0 0 10px rgba(72, 99, 252, 0.15),
+    0 0 20px rgba(1, 183, 255, 0.05);
   transition: all 0.4s ease;
   cursor: pointer;
   overflow: hidden;
   position: relative;
   z-index: 1;
+  backdrop-filter: blur(3px);
+}
+
+.informacoes:hover {
+  background: radial-gradient(circle at 20% 20%, #2d2d2d, var(--cor-fundo-cinza-escuro));
+  transform: scale(1.06);
+  border: 1px solid var(--cor-primaria);
+  box-shadow:
+    0 0 15px var(--cor-secundaria),
+    0 0 25px var(--cor-primaria),
+    inset 0 0 10px rgba(1, 183, 255, 0.2);
+}
+
+.informacoes.ativo {
+  position: fixed;
+  top: 40%;
+  left: 40%;
+  
+  z-index: 999;
+  width: 90%;
+  max-width: 400px;
+  background: linear-gradient(145deg, var(--cor-fundo-cinza-claro), #1e1e1e);
+  box-shadow:
+    0 0 25px var(--cor-secundaria),
+    0 0 35px var(--cor-primaria),
+    inset 0 0 10px rgba(1, 183, 255, 0.2);
 }
 
 .informacoes .logo i {
   font-size: 5rem;
   color: var(--cor-primaria);
-  transition: transform 0.4s ease, color 0.4s ease;
+  transition: transform 0.4s ease, color 0.4s ease, text-shadow 0.4s ease;
+  text-shadow: 0 0 8px rgba(72, 99, 252, 0.3);
+}
+
+.informacoes:hover .logo i {
+  color: var(--cor-branca);
+  transform: scale(1.2) rotate(3deg);
+  text-shadow: 0 0 15px var(--cor-secundaria);
 }
 
 .informacoes h3 {
@@ -121,46 +165,37 @@ export default {
   font-family: var(--fonte-secundaria);
   line-height: 1.6;
   color: var(--cor-branca);
-  opacity: 0;
-  max-height: 0;
-  transition: max-height 0.5s ease, opacity 0.4s ease;
-}
-
-.informacoes:hover {
-  background-color: var(--cor-fundo-cinza-escuro);
-  transform: scale(1.05);
-  box-shadow: 0 0 15px var(--cor-secundaria), 0 0 25px var(--cor-primaria);
-}
-
-.informacoes:hover .logo i {
-  color: var(--cor-branca);
-  transform: scale(1.2) rotate(3deg);
-}
-
-.informacoes.ativo {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%) scale(1.05);
-  background-color: var(--cor-fundo-cinza-escuro);
-  z-index: 9999;
-  width: 90%;
-  max-width: 600px;
-  border: 2px solid var(--cor-primaria);
-  box-shadow: 0 0 20px var(--cor-secundaria), 0 0 30px var(--cor-primaria);
-}
-
-.informacoes.ativo p {
-  max-height: 300px;
-  opacity: 1;
   margin-top: 20px;
 }
 
-.container-habilidades.bloqueado .informacoes:not(.ativo) {
-  filter: blur(1.5px) grayscale(80%);
-  pointer-events: none;
-  transform: scale(0.95);
-  opacity: 0.4;
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(10, 10, 10, 0.6);
+  backdrop-filter: blur(4px);
+  z-index: 998;
+}
+
+.fade-slide-enter-active,
+.fade-slide-leave-active {
+  transition: all 0.4s ease;
+}
+
+.fade-slide-enter-from,
+.fade-slide-leave-to {
+  opacity: 0;
+  max-height: 0;
+  transform: translateY(10px);
+}
+
+.fade-slide-enter-to,
+.fade-slide-leave-from {
+  opacity: 1;
+  max-height: 300px;
+  transform: translateY(0);
 }
 
 @media screen and (max-width: 768px) {
@@ -170,19 +205,10 @@ export default {
     padding: 0 15px;
   }
 
-  .informacoes {
+  .card-wrapper {
     flex: 0 1 90%;
     max-width: 250px;
     margin: 0 auto;
-  }
-
-  .informacoes.ativo {
-    width: 95vw;
-    max-width: 95%;
-    height: auto;
-    max-height: 80vh;
-    overflow-y: auto;
-    padding: 40px 20px;
   }
 }
 </style>

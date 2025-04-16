@@ -1,33 +1,41 @@
 <script setup>
 import { ref } from 'vue'
 
-// Linhas de código animadas com piadinhas francesas e dev
 const codeLines = ref([
   "const baguette = require('fromage') || 'pain';",
-  "if (devMood === 'crashed') reboot('café');",
-  "const life = () => code ? survive() : cry();",
-  "try { deploy() } catch (erreur) { blame('stagiaire'); }",
-  "function sleep(ms) { return new Promise(resolve => setTimeout(resolve, ms)) }",
-  "// TODO: Demander à ChatGPT de finir ce projet 😅",
-  "if (typeof motivation === 'undefined') console.warn('Encore lundi...')",
-  "const baguetteLength = Math.PI * fromage;",
-  "useEffect(() => manger(🍕), []);",
-  "#include <croissant.h>",
-  "const bug = feature || surprise();"
-])
+  "if (devMood === 'crashed') reboot('café');", 
+  "function getSum(a, b) { return a + b; }", 
+  "SELECT * FROM users WHERE age > 18;", 
+  "<?php echo 'Bonjour le monde!'; ?>", 
+  "let greeting: string = 'Hello, TypeScript!';", 
+  "const isEven = (num: number): boolean => num % 2 === 0;", 
+  "for (let i = 0; i < 5; i++) { console.log(i); }", 
+  "async function fetchData(url) { const response = await fetch(url); return response.json(); }", 
+  "def factorial(n): return 1 if n == 0 else n * factorial(n - 1)", 
+  "const arr = [1, 2, 3].map(x => x * 2);", 
+  "INSERT INTO orders (product_id, quantity) VALUES (1, 5);", 
+  "let x: number = 10; while (x > 0) { console.log(x--); }", 
+  "class Animal { constructor(name) { this.name = name; } }", 
+  "const randomInt = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min;", 
+]);
 
 // Função que retorna estilos aleatórios para cada linha
 function randomStyle() {
-  const top = Math.floor(Math.random() * 100)
+  const top = Math.floor(Math.random() * 130)
   const left = Math.floor(Math.random() * 100)
-  const size = (Math.random() * 0.7 + 0.8).toFixed(2)
+  const size = (Math.random() * 0.7 + 1).toFixed(2)
   const delay = (Math.random() * 6).toFixed(2)
+  
+  // 30% de chance de aparecer na frente da imagem
+  const isInFront = Math.random() < 0.3
+  const zIndex = isInFront ? 2 : -1
 
   return {
     top: `${top}%`,
     left: `${left}%`,
     transform: `scale(${size})`,
     animationDelay: `${delay}s`,
+    zIndex
   }
 }
 </script>
@@ -40,22 +48,22 @@ function randomStyle() {
         <!-- Texto: Saudação, Nome, Título -->
         <div
           v-motion
-          :initial="{ opacity: 0, x: -100 }"
+          :initial="{ opacity: 0, x: -850 }"
           :enter="{
             opacity: 1,
             x: 0,
-            transition: { duration: 2500, easing: 'ease-out' }
+            transition: { duration: 1500, easing: 'ease-out' }
           }"
           class="texto-home"
         >
-          <p>Salut 🖖</p>
+          <p>Salut !</p>
           <h1>Je suis Nicolas Bes</h1>
           <h2>Developpeur Web en formation.</h2>
 
           <!-- Redes sociais com animação encadeada -->
           <div
             v-motion
-            :initial="{ opacity: 0, y: 20 }"
+            :initial="{ opacity: 0, y: 200 }"
             :enter="{
               opacity: 1,
               y: 0,
@@ -73,11 +81,12 @@ function randomStyle() {
         <!-- Imagem com animação após redes sociais -->
         <div
           v-motion
-          :initial="{ opacity: 0, scale: 0.95 }"
+          :initial="{ opacity: 0, x: 550 }"
           :enter="{
             opacity: 1,
-            scale: 1,
-            transition: { duration: 1500, delay: 500, easing: 'ease-out' }
+            
+            x: 0,
+            transition: { duration: 1200, delay: 500, easing: 'ease-out' }
           }"
           class="img-home"
         >
@@ -96,11 +105,7 @@ function randomStyle() {
               </span>
             </div>
 
-            <!-- Cantos com efeito glow -->
-            <span class="corner top-left"></span>
-            <span class="corner top-right"></span>
-            <span class="corner bottom-left"></span>
-            <span class="corner bottom-right"></span>
+           
           </div>
         </div>
 
@@ -131,11 +136,11 @@ function randomStyle() {
 .full-screen {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center; /* Alinha conteúdo ao centro */
+  justify-content: center; 
   align-items: center;
   width: 100%;
   backdrop-filter: blur(6px);
-  position: relative; /* Necessário para garantir que a imagem e o texto possam flutuar */
+  position: relative;
 }
 
 .texto-home {
@@ -146,14 +151,14 @@ function randomStyle() {
   margin: auto;
   z-index: 2;
   text-align: left;
-  position: relative; /* Permitirá o flutuar do texto */
+  position: relative; 
 }
 
 .img-home {
   flex: 1 1 50%;
   padding: 20px;
   text-align: center;
-  z-index: 3;
+  z-index: 1;
   position: relative;
 }
 
@@ -162,6 +167,7 @@ function randomStyle() {
   max-width: 380px;
   margin: auto;
   padding: 10px;
+  z-index: 1;
 }
 
 .img-home .img-box img {
@@ -169,6 +175,7 @@ function randomStyle() {
   border-radius: 20%;
   border: 4px solid var(--cor-primaria);
   box-shadow: 0 0 15px var(--cor-secundaria);
+  z-index: 1;
 }
 
 /* Texto */
@@ -185,7 +192,7 @@ function randomStyle() {
   font-weight: 700;
   margin-bottom: 15px;
   color: var(--cor-primaria);
-  text-shadow: 0 0 5px var(--cor-primaria);
+  text-shadow: 0 0 35px var(--cor-primaria);
 }
 
 .texto-home h2 {
@@ -233,18 +240,19 @@ function randomStyle() {
 /* Linhas de código animadas */
 .code-lines {
   position: absolute;
-  top: 0;
-  left: 0;
+  top: -40px;
+  left: -200px;
   width: 100%;
   height: 100%;
   pointer-events: none;
-  z-index: 4;
+  
+  
 }
 
 .code-line {
   position: absolute;
   font-family: 'Courier New', monospace;
-  font-size: 1.2rem;
+  font-size: 1rem;
   color: #00fff7;
   opacity: 1;
   white-space: nowrap;
@@ -275,20 +283,6 @@ function randomStyle() {
   }
 }
 
-/* Cantos com brilho */
-.corner {
-  position: absolute;
-  width: 12px;
-  height: 12px;
-  background-color: var(--cor-secundaria);
-  box-shadow: 0 0 10px var(--cor-primaria), 0 0 20px var(--cor-secundaria);
-  z-index: 5;
-}
-
-.top-left { top: 0; left: 0; }
-.top-right { top: 0; right: 0; }
-.bottom-left { bottom: 0; left: 0; }
-.bottom-right { bottom: 0; right: 0; }
 
 /* Responsivo */
 @media (max-width: 900px) {

@@ -19,6 +19,7 @@ library.add(fab)
 const app = createApp(App)
 
 // Usa plugins e registra componentes
+
 app.use(router)
 app.use(MotionPlugin)
 app.component('font-awesome-icon', FontAwesomeIcon)
