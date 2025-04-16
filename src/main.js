@@ -10,6 +10,8 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { fab } from '@fortawesome/free-brands-svg-icons'
 import { MotionPlugin } from '@vueuse/motion'
 
+
+
 // Adiciona os ícones à biblioteca
 library.add(fab)
 

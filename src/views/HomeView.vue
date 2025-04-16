@@ -1,17 +1,68 @@
 <script setup>
+import { ref } from 'vue'
 
+// Linhas de código animadas com piadinhas francesas e dev
+const codeLines = ref([
+  "const baguette = require('fromage') || 'pain';",
+  "if (devMood === 'crashed') reboot('café');",
+  "const life = () => code ? survive() : cry();",
+  "try { deploy() } catch (erreur) { blame('stagiaire'); }",
+  "function sleep(ms) { return new Promise(resolve => setTimeout(resolve, ms)) }",
+  "// TODO: Demander à ChatGPT de finir ce projet 😅",
+  "if (typeof motivation === 'undefined') console.warn('Encore lundi...')",
+  "const baguetteLength = Math.PI * fromage;",
+  "useEffect(() => manger(🍕), []);",
+  "#include <croissant.h>",
+  "const bug = feature || surprise();"
+])
+
+// Função que retorna estilos aleatórios para cada linha
+function randomStyle() {
+  const top = Math.floor(Math.random() * 100)
+  const left = Math.floor(Math.random() * 100)
+  const size = (Math.random() * 0.7 + 0.8).toFixed(2)
+  const delay = (Math.random() * 6).toFixed(2)
+
+  return {
+    top: `${top}%`,
+    left: `${left}%`,
+    transform: `scale(${size})`,
+    animationDelay: `${delay}s`,
+  }
+}
 </script>
 
 <template>
-<section class="home section">
+  <section class="home section">
     <div class="container">
       <div class="row full-screen alinhar-itens-no-centro">
-        <div class="texto-home">
+        
+        <!-- Texto: Saudação, Nome, Título -->
+        <div
+          v-motion
+          :initial="{ opacity: 0, x: -100 }"
+          :enter="{
+            opacity: 1,
+            x: 0,
+            transition: { duration: 2500, easing: 'ease-out' }
+          }"
+          class="texto-home"
+        >
           <p>Salut 🖖</p>
           <h1>Je suis Nicolas Bes</h1>
           <h2>Developpeur Web en formation.</h2>
 
-          <div class="redes-sociais">
+          <!-- Redes sociais com animação encadeada -->
+          <div
+            v-motion
+            :initial="{ opacity: 0, y: 20 }"
+            :enter="{
+              opacity: 1,
+              y: 0,
+              transition: { duration: 1000, delay: 500, easing: 'ease-out' }
+            }"
+            class="redes-sociais"
+          >
             <a href="#" class="outer-shadow"><font-awesome-icon icon="fa-brands fa-linkedin" /></a>
             <a href="#" class="outer-shadow"><font-awesome-icon icon="fa-brands fa-whatsapp" /></a>
             <a href="#" class="outer-shadow"><font-awesome-icon icon="fa-brands fa-github" /></a>
@@ -19,60 +70,98 @@
           </div>
         </div>
 
-        <div class="img-home">
-          <div class="img-box">
-            <img class="outer-shadow" src="/images/nico.png" alt="photo" />
+        <!-- Imagem com animação após redes sociais -->
+        <div
+          v-motion
+          :initial="{ opacity: 0, scale: 0.95 }"
+          :enter="{
+            opacity: 1,
+            scale: 1,
+            transition: { duration: 1500, delay: 500, easing: 'ease-out' }
+          }"
+          class="img-home"
+        >
+          <div class="img-box hover-effect">
+            <img class="outer-shadow" src="/images/nico2.png" alt="photo" />
+            
+            <!-- Linhas de código animadas ao redor -->
+            <div class="code-lines">
+              <span
+                v-for="(line, index) in codeLines"
+                :key="index"
+                class="code-line"
+                :style="randomStyle()"
+              >
+                {{ line }}
+              </span>
+            </div>
+
+            <!-- Cantos com efeito glow -->
+            <span class="corner top-left"></span>
+            <span class="corner top-right"></span>
+            <span class="corner bottom-left"></span>
+            <span class="corner bottom-right"></span>
           </div>
         </div>
+
       </div>
     </div>
   </section>
 </template>
 
-
 <style scoped>
 .home {
-  min-height: calc(100vh - 115px - 169px);
+  min-height: calc(100vh - 140px);
   background-color: var(--cor-fundo-escuro);
   color: var(--cor-branca);
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: calc(100vh - 140px);
   padding: 60px 20px;
   overflow: hidden;
   position: relative;
 }
 
+.container {
+  padding-inline: 30px;
+  max-width: 1200px;
+  margin: auto;
+}
+
 .full-screen {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center; /* Alinha conteúdo ao centro */
   align-items: center;
-  justify-content: space-between;
   width: 100%;
-  max-width: 1200px;
-  margin: auto;
   backdrop-filter: blur(6px);
+  position: relative; /* Necessário para garantir que a imagem e o texto possam flutuar */
 }
 
 .texto-home {
   flex: 1 1 50%;
-  padding: 20px;
+  padding-inline: 30px;
+  padding-block: 20px;
+  max-width: 520px;
+  margin: auto;
   z-index: 2;
   text-align: left;
+  position: relative; /* Permitirá o flutuar do texto */
 }
 
 .img-home {
   flex: 1 1 50%;
   padding: 20px;
   text-align: center;
+  z-index: 3;
+  position: relative;
 }
 
 .img-home .img-box {
-  max-width: 280px;
+  position: relative;
+  max-width: 380px;
   margin: auto;
   padding: 10px;
-  
 }
 
 .img-home .img-box img {
@@ -82,7 +171,7 @@
   box-shadow: 0 0 15px var(--cor-secundaria);
 }
 
-/* Tipografia */
+/* Texto */
 .texto-home p {
   font-family: var(--fonte-primaria);
   font-size: var(--fonte-grande);
@@ -97,7 +186,6 @@
   margin-bottom: 15px;
   color: var(--cor-primaria);
   text-shadow: 0 0 5px var(--cor-primaria);
-  
 }
 
 .texto-home h2 {
@@ -108,7 +196,7 @@
   color: var(--cor-branca);
 }
 
-/* Redes Sociais */
+/* Redes sociais */
 .redes-sociais {
   display: flex;
   justify-content: flex-start;
@@ -123,7 +211,7 @@
   border-radius: 20%;
   border: 2px solid var(--cor-primaria);
   transition: all 0.4s ease;
-  box-shadow: 0 0 12px var(--cor-primaria);
+  box-shadow: 0 0 8px var(--cor-primaria);
   backdrop-filter: blur(5px);
   display: flex;
   align-items: center;
@@ -131,28 +219,76 @@
 }
 
 .redes-sociais a:hover {
-  
   color: var(--cor-fundo-escuro);
   box-shadow: 0 0 20px var(--cor-primaria), 0 0 30px var(--cor-secundaria);
   transform: scale(1.1);
 }
 
-/* Efeito neon no ícone (SVG interno) */
 .redes-sociais a:hover svg {
   color: whitesmoke;
-  filter: drop-shadow(0 0 10px #00bfff) drop-shadow(0 0 10px #00bfff);
+  filter: drop-shadow(0 0 10px #00bfff);
   transition: all 0.4s ease;
 }
 
-/* Animação */
-@keyframes glowText {
+/* Linhas de código animadas */
+.code-lines {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 4;
+}
+
+.code-line {
+  position: absolute;
+  font-family: 'Courier New', monospace;
+  font-size: 1.2rem;
+  color: #00fff7;
+  opacity: 1;
+  white-space: nowrap;
+  animation: floatLine 8s ease-in-out infinite;
+  filter: drop-shadow(0 0 3px #01b7ff);
+  max-width: 250px;
+}
+
+@keyframes floatLine {
   0% {
-    text-shadow: 0 0 10px var(--cor-primaria), 0 0 20px var(--cor-secundaria);
+    transform: translateY(0px) translateX(0px) rotate(0deg);
+    opacity: 0;
+  }
+  25% {
+    opacity: 1;
+  }
+  50% {
+    transform: translateY(-10px) translateX(10px) rotate(1deg);
+    opacity: 1;
+  }
+  75% {
+    transform: translateY(10px) translateX(-10px) rotate(-1deg);
+    opacity: 0.8;
   }
   100% {
-    text-shadow: 0 0 20px var(--cor-secundaria), 0 0 40px var(--cor-primaria);
+    opacity: 0;
+    transform: translateY(0px) translateX(0px) rotate(0deg);
   }
 }
+
+/* Cantos com brilho */
+.corner {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  background-color: var(--cor-secundaria);
+  box-shadow: 0 0 10px var(--cor-primaria), 0 0 20px var(--cor-secundaria);
+  z-index: 5;
+}
+
+.top-left { top: 0; left: 0; }
+.top-right { top: 0; right: 0; }
+.bottom-left { bottom: 0; left: 0; }
+.bottom-right { bottom: 0; right: 0; }
 
 /* Responsivo */
 @media (max-width: 900px) {
@@ -187,5 +323,4 @@
     justify-content: center;
   }
 }
-
 </style>

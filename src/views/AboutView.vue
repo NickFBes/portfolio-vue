@@ -68,6 +68,7 @@
 }
 
 .img-box img {
+  max-height: 400px;
   max-width: 100%;
   border-radius: 20%;
   border: 6px solid var(--cor-primaria);

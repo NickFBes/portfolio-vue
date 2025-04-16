@@ -48,6 +48,10 @@ onMounted(() => {
     breakpoints: {
       0: {
         slidesPerView: 1,
+        spaceBetween: 16
+      },
+      640: {
+        slidesPerView: 1,
         spaceBetween: 20
       },
       768: {
@@ -62,6 +66,7 @@ onMounted(() => {
   })
 })
 </script>
+
 
 <template>
   <section class="projetos section" id="projetos">
@@ -113,17 +118,22 @@ onMounted(() => {
 }
 
 .container-projetos {
-  display: flex;
   padding: 1rem;
-  margin: 0 auto;
+}
+
+.swiper-slide {
+  display: flex;
+  flex-direction: column;
 }
 
 .projeto {
   border-radius: 5px;
   transition: all 0.3s ease;
-  position: relative;
   overflow: hidden;
   background-color: var(--cor-fundo-escuro);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 .projeto:hover {
@@ -144,17 +154,14 @@ onMounted(() => {
 .projeto .informacoes-projeto {
   padding: 20px;
   background-color: var(--cor-fundo-escuro);
-  opacity: 1;
-  position: relative;
 }
 
 .projeto h3 {
   font-size: 2.2rem;
   font-weight: 600;
-  background-color: var(--cor-fundo-escuro);
-  width: 100%;
   padding: 10px 20px;
   color: var(--cor-primaria);
+  background-color: var(--cor-fundo-escuro);
 }
 
 .projeto .informacoes-projeto p {
@@ -162,7 +169,7 @@ onMounted(() => {
   margin-top: 10px;
 }
 
-/* Botões de navegação do Swiper */
+/* Navegação */
 .swiper-button-next,
 .swiper-button-prev {
   color: var(--cor-primaria);
@@ -181,22 +188,19 @@ onMounted(() => {
 
 .swiper-button-next:hover,
 .swiper-button-prev:hover {
-  
-  
   box-shadow: 0 0 15px var(--cor-primaria), 0 0 30px var(--cor-secundaria);
 }
 
-/* Ícones das setas (ajustar se estiver usando setas como imagens) */
 .swiper-button-next::after,
 .swiper-button-prev::after {
   font-size: 20px;
   font-weight: bold;
 }
 
+/* Responsivo */
 @media (max-width: 768px) {
   .projeto {
-    max-width: 90%;
-    margin: 0 auto;
+    max-width: 100%;
   }
 }
 </style>
