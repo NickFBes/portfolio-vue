@@ -2,21 +2,55 @@
 import { ref } from 'vue'
 
 const codeLines = ref([
-  "const baguette = require('fromage') || 'pain';",
-  "if (devMood === 'crashed') reboot('café');", 
-  "function getSum(a, b) { return a + b; }", 
-  "SELECT * FROM users WHERE age > 18;", 
-  "<?php echo 'Bonjour le monde!'; ?>", 
-  "let greeting: string = 'Hello, TypeScript!';", 
-  "const isEven = (num: number): boolean => num % 2 === 0;", 
-  "for (let i = 0; i < 5; i++) { console.log(i); }", 
-  "async function fetchData(url) { const response = await fetch(url); return response.json(); }", 
-  "def factorial(n): return 1 if n == 0 else n * factorial(n - 1)", 
-  "const arr = [1, 2, 3].map(x => x * 2);", 
-  "INSERT INTO orders (product_id, quantity) VALUES (1, 5);", 
-  "let x: number = 10; while (x > 0) { console.log(x--); }", 
-  "class Animal { constructor(name) { this.name = name; } }", 
-  "const randomInt = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min;", 
+  // Vue.js
+  "<template><div v-if=\"isVisible\">Bonjour Vue!</div></template>",
+
+  // PHP
+  "<?php echo htmlspecialchars($_POST['name']); ?>",
+
+  // JavaScript
+  "document.querySelectorAll('.btn').forEach(btn => btn.disabled = false);",
+
+  // SQL
+  "SELECT email FROM users WHERE verified = 1 ORDER BY created_at DESC;",
+
+  // React (JSX)
+  "const Button = () => <button onClick={() => alert('Clicked!')}>Click me</button>;",
+
+  // TypeScript
+  "function greet(name: string): string { return `Hello, ${name}`; }",
+
+  // Python
+  "with open('data.txt') as file: data = file.read()",  
+
+  // C++
+  "std::vector<int> nums = {1, 2, 3}; std::sort(nums.begin(), nums.end());",
+
+  // Rust
+  "let numbers = vec![1, 2, 3]; let doubled: Vec<_> = numbers.iter().map(|x| x * 2).collect();",
+
+  // Kotlin
+  "val names = listOf(\"Jean\", \"Marie\").map { it.uppercase() }",
+
+  // Bash
+  "grep -Ri 'error' ./logs/",
+
+  // HTML
+  "<input type=\"text\" placeholder=\"Votre email\" required />",
+
+  // CSS
+  ".highlight { background-color: #01b7ff; color: white; }",
+
+  // Swift
+  "let sum = (1...5).reduce(0, +)",
+
+  // Go
+  "fmt.Println(strings.ToUpper(\"bonjour\"))",
+
+  // Easter eggs (3 discretas e engraçadas)
+  "if (!coffee) throw new Error('No build before espresso');",
+  "echo 'alias deploy=\"echo non\"' >> ~/.bashrc",
+  "// TODO: Replace hacks with proper code before 2040"
 ]);
 
 // Função que retorna estilos aleatórios para cada linha
@@ -52,7 +86,7 @@ function randomStyle() {
           :enter="{
             opacity: 1,
             x: 0,
-            transition: { duration: 1500, easing: 'ease-out' }
+            transition: { duration: 1200, easing: 'ease-out' }
           }"
           class="texto-home"
         >
@@ -60,22 +94,23 @@ function randomStyle() {
           <h1>Je suis Nicolas Bes</h1>
           <h2>Developpeur Web en formation.</h2>
 
+          
           <!-- Redes sociais com animação encadeada -->
-          <div
-            v-motion
-            :initial="{ opacity: 0, y: 200 }"
-            :enter="{
-              opacity: 1,
-              y: 0,
-              transition: { duration: 1000, delay: 500, easing: 'ease-out' }
-            }"
-            class="redes-sociais"
-          >
-            <a href="#" class="outer-shadow"><font-awesome-icon icon="fa-brands fa-linkedin" /></a>
-            <a href="#" class="outer-shadow"><font-awesome-icon icon="fa-brands fa-whatsapp" /></a>
-            <a href="#" class="outer-shadow"><font-awesome-icon icon="fa-brands fa-github" /></a>
-            <a href="#" class="outer-shadow"><font-awesome-icon icon="fa-brands fa-instagram" /></a>
-          </div>
+<div
+  v-motion
+  :initial="{ opacity: 0, y: 200 }"
+  :enter="{
+    opacity: 1,
+    y: 0,
+    transition: { duration: 1000, delay: 500, easing: 'ease-out' }
+  }"
+  class="redes-sociais"
+>
+  <a href="#"><font-awesome-icon icon="fa-brands fa-linkedin" /></a>
+  <a href="#"><font-awesome-icon icon="fa-brands fa-whatsapp" /></a>
+  <a href="#"><font-awesome-icon icon="fa-brands fa-github" /></a>
+  <a href="#"><font-awesome-icon icon="fa-brands fa-instagram" /></a>
+</div>
         </div>
 
         <!-- Imagem com animação após redes sociais -->
@@ -86,7 +121,7 @@ function randomStyle() {
             opacity: 1,
             
             x: 0,
-            transition: { duration: 1200, delay: 500, easing: 'ease-out' }
+            transition: { duration: 1000, delay: 500, easing: 'ease-out' }
           }"
           class="img-home"
         >
@@ -124,7 +159,7 @@ function randomStyle() {
   justify-content: center;
   padding: 60px 20px;
   overflow: hidden;
-  position: relative;
+  
 }
 
 .container {
@@ -140,7 +175,7 @@ function randomStyle() {
   align-items: center;
   width: 100%;
   backdrop-filter: blur(6px);
-  position: relative;
+  
 }
 
 .texto-home {
@@ -148,26 +183,25 @@ function randomStyle() {
   padding-inline: 30px;
   padding-block: 20px;
   max-width: 520px;
-  margin: auto;
+  
   z-index: 2;
   text-align: left;
-  position: relative; 
+ 
 }
 
 .img-home {
   flex: 1 1 50%;
   padding: 20px;
   text-align: center;
-  z-index: 1;
-  position: relative;
+  
 }
 
 .img-home .img-box {
-  position: relative;
+ 
   max-width: 380px;
-  margin: auto;
+  
   padding: 10px;
-  z-index: 1;
+  
 }
 
 .img-home .img-box img {
@@ -214,21 +248,11 @@ function randomStyle() {
 .redes-sociais a {
   font-size: 2.4rem;
   color: var(--cor-primaria);
-  padding: 12px;
-  border-radius: 20%;
-  border: 2px solid var(--cor-primaria);
-  transition: all 0.4s ease;
-  box-shadow: 0 0 8px var(--cor-primaria);
-  backdrop-filter: blur(5px);
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  transition: filter 0.3s ease;
 }
 
 .redes-sociais a:hover {
-  color: var(--cor-fundo-escuro);
-  box-shadow: 0 0 20px var(--cor-primaria), 0 0 30px var(--cor-secundaria);
-  transform: scale(1.1);
+  filter: brightness(1.5) drop-shadow(0 0 2px var(--cor-primaria));
 }
 
 .redes-sociais a:hover svg {
@@ -245,8 +269,6 @@ function randomStyle() {
   width: 100%;
   height: 100%;
   pointer-events: none;
-  
-  
 }
 
 .code-line {

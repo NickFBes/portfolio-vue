@@ -2,14 +2,14 @@
 import { ref } from 'vue'
 
 const habilidades = ref([
-  { titulo: 'JavaScript', icone: 'devicon devicon-javascript-plain', descricao: 'Manipulation dynamique et logique de programmation avancée.' },
-  { titulo: 'HTML5', icone: 'devicon devicon-html5-plain-wordmark', descricao: 'Création de structures sémantiques et accessibles.' },
-  { titulo: 'CSS3', icone: 'devicon devicon-css3-plain-wordmark', descricao: 'Stylisation moderne, animations et réactivité.' },
-  { titulo: 'GitHub', icone: 'devicon devicon-github-original', descricao: 'Versionnage et collaboration sur des projets open source.' },
-  { titulo: 'Git', icone: 'devicon devicon-git-plain', descricao: 'Contrôle des versions et flux de développement.' },
-  { titulo: 'Vue.js', icone: 'devicon devicon-vuejs-plain', descricao: 'Framework JavaScript progressif pour interfaces modernes.' },
-  { titulo: 'PHP', icone: 'devicon devicon-php-plain', descricao: 'Développement back-end et logique des serveurs.' },
-  { titulo: 'MySQL', icone: 'devicon devicon-mysql-plain-wordmark', descricao: 'Base de données relationnelle et requêtes SQL.' }
+  { titulo: 'JavaScript', icone: 'devicon devicon-javascript-plain', descricao: 'Manipulação dinâmica e lógica de programação avançada.' },
+  { titulo: 'HTML5', icone: 'devicon devicon-html5-plain-wordmark', descricao: 'Criação de estruturas semânticas e acessíveis.' },
+  { titulo: 'CSS3', icone: 'devicon devicon-css3-plain-wordmark', descricao: 'Estilização moderna, animações e responsividade.' },
+  { titulo: 'GitHub', icone: 'devicon devicon-github-original', descricao: 'Controle de versão e colaboração em projetos open source.' },
+  { titulo: 'Git', icone: 'devicon devicon-git-plain', descricao: 'Gerenciamento de versões e fluxo de trabalho ágil.' },
+  { titulo: 'Vue.js', icone: 'devicon devicon-vuejs-plain', descricao: 'Framework progressivo para interfaces de usuário interativas.' },
+  { titulo: 'PHP', icone: 'devicon devicon-php-plain', descricao: 'Desenvolvimento back-end e integração de APIs.' },
+  { titulo: 'MySQL', icone: 'devicon devicon-mysql-plain-wordmark', descricao: 'Gerenciamento de banco de dados e modelagem relacional.' }
 ])
 
 const ativoIndex = ref(null)
@@ -19,11 +19,12 @@ const toggleCard = (index) => {
 }
 </script>
 
+
 <template>
   <section class="habilidades section" id="habilidades">
     <div class="container">
       <div class="section-title">
-        <h2>Compétences</h2>
+        <h2>Competências</h2>
       </div>
 
       <div class="container-habilidades">
@@ -35,14 +36,11 @@ const toggleCard = (index) => {
           <div
             @click="toggleCard(index)"
             v-motion
-            :initial="{ opacity: 0, y: 60 }"
+            :initial="{ opacity: 0, y: 30 }"
             :enter="{
               opacity: 1,
               y: 0,
-              transition: {
-                duration: 800,
-                easing: 'ease-out'
-              }
+              transition: { duration: 500, delay: index * 100, easing: 'ease-out' }
             }"
             class="informacoes"
             :class="{ ativo: ativoIndex === index }"
@@ -52,163 +50,115 @@ const toggleCard = (index) => {
             </div>
             <h3>{{ habilidade.titulo }}</h3>
 
-            <transition name="fade-slide">
-              <p v-if="ativoIndex === index">{{ habilidade.descricao }}</p>
+            <transition name="accordion">
+              <div v-if="ativoIndex === index" class="descricao">
+                <p>{{ habilidade.descricao }}</p>
+              </div>
             </transition>
           </div>
         </div>
       </div>
-
-      <!-- Backdrop opcional -->
-      <div
-        v-if="ativoIndex !== null"
-        class="backdrop"
-        @click="ativoIndex = null"
-      ></div>
     </div>
   </section>
 </template>
+
 
 <style scoped>
 .habilidades.section {
   background-color: var(--cor-fundo-escuro);
   padding: 5rem 2rem;
   color: var(--cor-branca);
-  position: relative;
 }
 
 .section-title h2 {
   font-size: var(--fonte-gigante);
   color: var(--cor-primaria);
-  margin-bottom: 60px;
   text-align: center;
-  letter-spacing: 1.5px;
+  margin-bottom: 60px;
   font-family: var(--fonte-primaria);
 }
 
 .container-habilidades {
   display: flex;
   flex-wrap: wrap;
-  gap: 30px;
+  gap: 25px;
   justify-content: center;
 }
 
 .card-wrapper {
-  flex: 0 1 260px;
-  position: relative;
+  flex: 0 1 220px;
 }
 
 .informacoes {
-  background: linear-gradient(145deg, var(--cor-fundo-cinza-claro), #1e1e1e);
-  border: 1px solid rgba(1, 183, 255, 0.2);
+  background: linear-gradient(145deg, rgba(30,30,30,0.7), rgba(0, 0, 0, 0.5));
+  border: 1px solid rgba(1, 183, 255, 0.15);
   border-radius: 20px;
-  padding: 30px 20px;
+  padding: 25px 18px;
   text-align: center;
-  box-shadow:
-    0 0 10px rgba(72, 99, 252, 0.15),
-    0 0 20px rgba(1, 183, 255, 0.05);
-  transition: all 0.4s ease;
+  transition: all 0.3s ease;
   cursor: pointer;
-  overflow: hidden;
   position: relative;
-  z-index: 1;
-  backdrop-filter: blur(3px);
+  overflow: hidden;
+  backdrop-filter: blur(4px);
 }
 
 .informacoes:hover {
-  background: radial-gradient(circle at 20% 20%, #2d2d2d, var(--cor-fundo-cinza-escuro));
-  transform: scale(1.06);
-  border: 1px solid var(--cor-primaria);
-  box-shadow:
-    0 0 15px var(--cor-secundaria),
-    0 0 25px var(--cor-primaria),
-    inset 0 0 10px rgba(1, 183, 255, 0.2);
+  border-color: var(--cor-primaria);
+  box-shadow: 0 0 12px rgba(1, 183, 255, 0.4);
+  transform: translateY(-6px);
 }
 
-.informacoes.ativo {
-  position: fixed;
-  top: 40%;
-  left: 40%;
-  
-  z-index: 999;
-  width: 90%;
-  max-width: 400px;
-  background: linear-gradient(145deg, var(--cor-fundo-cinza-claro), #1e1e1e);
-  box-shadow:
-    0 0 25px var(--cor-secundaria),
-    0 0 35px var(--cor-primaria),
-    inset 0 0 10px rgba(1, 183, 255, 0.2);
-}
-
-.informacoes .logo i {
-  font-size: 5rem;
+.logo i {
+  font-size: 4rem;
   color: var(--cor-primaria);
-  transition: transform 0.4s ease, color 0.4s ease, text-shadow 0.4s ease;
-  text-shadow: 0 0 8px rgba(72, 99, 252, 0.3);
+  transition: color 0.4s ease, text-shadow 0.4s ease;
+  text-shadow: 0 0 6px rgba(72, 99, 252, 0.2);
 }
 
 .informacoes:hover .logo i {
   color: var(--cor-branca);
-  transform: scale(1.2) rotate(3deg);
-  text-shadow: 0 0 15px var(--cor-secundaria);
+  text-shadow: 0 0 10px var(--cor-primaria);
 }
 
-.informacoes h3 {
-  font-size: var(--fonte-extra-grande);
+h3 {
+  margin-top: 10px;
+  font-size: var(--fonte-grande);
   color: var(--cor-branca);
-  margin: 15px 0 10px;
   font-family: var(--fonte-primaria);
 }
 
-.informacoes p {
+.descricao {
+  margin-top: 15px;
+  overflow: hidden;
+}
+
+.descricao p {
   font-size: var(--fonte-normal);
   font-family: var(--fonte-secundaria);
   line-height: 1.6;
   color: var(--cor-branca);
-  margin-top: 20px;
 }
 
-.backdrop {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(10, 10, 10, 0.6);
-  backdrop-filter: blur(4px);
-  z-index: 998;
+/* Animação suave do accordion */
+.accordion-enter-active, .accordion-leave-active {
+  transition: max-height 0.4s ease, opacity 0.4s ease;
 }
-
-.fade-slide-enter-active,
-.fade-slide-leave-active {
-  transition: all 0.4s ease;
-}
-
-.fade-slide-enter-from,
-.fade-slide-leave-to {
-  opacity: 0;
+.accordion-enter-from, .accordion-leave-to {
   max-height: 0;
-  transform: translateY(10px);
+  opacity: 0;
 }
-
-.fade-slide-enter-to,
-.fade-slide-leave-from {
-  opacity: 1;
+.accordion-enter-to, .accordion-leave-from {
   max-height: 300px;
-  transform: translateY(0);
+  opacity: 1;
 }
 
-@media screen and (max-width: 768px) {
-  .habilidades .container-habilidades {
-    justify-content: center;
-    gap: 20px;
-    padding: 0 15px;
-  }
-
+/* Responsividade */
+@media (max-width: 768px) {
   .card-wrapper {
     flex: 0 1 90%;
-    max-width: 250px;
+    max-width: 240px;
     margin: 0 auto;
   }
 }
+
 </style>
