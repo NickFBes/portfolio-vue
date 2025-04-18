@@ -41,6 +41,7 @@ onBeforeUnmount(() => {
             <li><router-link to="/sobre" @click="fecharMenu">À propos de moi</router-link></li>
             <li><router-link to="/habilidades" @click="fecharMenu">Compétences</router-link></li>
             <li><router-link to="/projetos" @click="fecharMenu">Mes projets</router-link></li>
+            <li><router-link to="/contact" @click="fecharMenu">Contact</router-link></li>
           
             
           </ul>

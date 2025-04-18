@@ -3,6 +3,7 @@ import HomeView from '../views/HomeView.vue'
 import AboutView from '../views/AboutView.vue'
 import SkillsView from '../views/SkillsView.vue'
 import ProjectsView from '../views/ProjectsView.vue'
+import ContactView from '../views/ContactView.vue'
 
 const routes = [
     {
@@ -24,6 +25,11 @@ const routes = [
       path: '/projetos',
       name: 'Projetos',
       component: ProjectsView
+    },
+    {
+      path: '/contact',
+      name: 'contact',
+      component: ContactView
     },
     {
       path: '/:catchAll(.*)',

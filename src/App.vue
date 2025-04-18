@@ -15,6 +15,7 @@ import Footer from './components/Footer.vue'
         </transition>
       </router-view>
     </main>
+   
 
     <Footer />
   </div>
