@@ -70,7 +70,7 @@
 
 .social-links a:hover svg {
   color: whitesmoke;
-  filter: drop-shadow(0 0 10px #00bfff) drop-shadow(0 0 10px #00bfff);
-  transition: all 0.5s ease;
+  filter: drop-shadow(0 0 3px #00bfff) drop-shadow(0 0 3px #00bfff);
+  transition: all 0.2s ease;
 }
 </style>

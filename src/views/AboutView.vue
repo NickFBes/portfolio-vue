@@ -1,30 +1,74 @@
 <script setup>
+import { useMotion, useMotionControls } from '@vueuse/motion'
+import { ref, nextTick } from 'vue'
+
+const mostrarAccordion = ref(false)
+
+const linhasTexto = [
+  "Bonjour ! Je m'appelle Nicolas Bes et je suis un développeur web en formation !",
+  "J'aime BEAUCOUP le domaine de la technologie.",
+  "Je me mets toujours au défi avec de nouveaux projets...",
+  "et je participe à des communautés de programmation pour obtenir des retours.",
+  "J'aime ÉNORMÉMENT le domaine de la technologie. 😁"
+]
 </script>
 
 <template>
-  <section class="sobre-mim section" id="sobre-mim">
+  <section class="section sobre-mim" id="sobre-mim">
     <div class="container">
-      <div class="row">
-        <div class="section-title">
-          <h2>À propos de moi</h2>
-        </div>
+      <div class="section-title">
+        <h2>À propos de moi</h2>
       </div>
-      <div class="row conteudo">
-        <div class="imagem-sobre-mim">
-          <div class="img-box">
-            <img src="/images/nico.png" alt="foto sobre mim" />
-          </div>
-        </div>
-        <div class="informacoes-sobre-mim">
-          <p>
-            Bonjour ! Je m'appelle Nicolas Bes et je suis un développeur web en formation ! J'aime BEAUCOUP le domaine de la technologie.
-          </p>
-          <p>
-            Je me mets toujours au défi avec de nouveaux projets et je participe à des communautés de programmation pour obtenir des retours d'autres développeurs et développeuses. J'aime ÉNORMÉMENT le domaine de la technologie. 😁
-          </p>
 
-          <div class="botoes">
-            <a target="_blank" href="/src/arquivos/cv.pdf" class="botao">Regardez mon CV</a>
+      <div class="conteudo">
+        <!-- Imagem animada vindo da esquerda -->
+        <div v-motion :initial="{ x: -400, opacity: 0 }" :enter="{
+            opacity: 1,
+            
+            x: 0,
+            transition: { duration: 900, delay: 400, easing: 'ease-out' }
+          }" class="imagem">
+          <img src="/images/nico.png" alt="Foto de Nicolas" />
+        </div>
+
+        <!-- Texto linha a linha com v-motion -->
+        <div class="texto">
+          <div v-for="(linha, index) in linhasTexto" :key="index">
+            <div
+            v-motion
+          :initial="{ opacity: 0, x: 400 }"
+          :enter="{
+            opacity: 1,
+            x: 0,
+            transition: { duration: 1100, easing: 'ease-out' }
+          }"
+              class="linha-texto"
+            >
+              {{ linha }}
+            </div>
+          </div>
+
+          <!-- Botão accordion -->
+          <div class="accordion-wrapper"
+          v-motion
+          :initial="{ opacity: 0, y: 450 }"
+          :enter="{
+            opacity: 1,
+            y: 0,
+            transition: { duration: 1100, easing: 'ease-out' }
+          }">
+            <button @click="mostrarAccordion = !mostrarAccordion" class="botao-cv">
+              📄 Mon CV
+            </button>
+
+            <div v-motion v-if="mostrarAccordion"
+              :initial="{ opacity: 0, height: 0 }"
+              :enter="{ opacity: 1, height: 'auto', transition: { duration: 0.4 } }"
+              class="accordion-content"
+            >
+              <a href="/src/arquivos/cv.pdf" target="_blank" class="cv-opcao">Visualiser</a>
+              <a href="/src/arquivos/cv.pdf" download class="cv-opcao">Télécharger</a>
+            </div>
           </div>
         </div>
       </div>
@@ -35,95 +79,105 @@
 <style scoped>
 .section {
   padding: 5rem 2rem;
-  
   color: var(--cor-branca);
+}
+
+.section-title {
+  text-align: center;
+  margin-bottom: 3rem;
 }
 
 .section-title h2 {
   font-size: var(--fonte-gigante);
   color: var(--cor-primaria);
-  margin-bottom: 60px;
-  text-align: center;
-  letter-spacing: 1.5px;
   font-family: var(--fonte-primaria);
 }
 
-.row.conteudo {
+.conteudo {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
+  gap: 40px;
 }
 
-.imagem-sobre-mim {
-  flex: 1 1 300px;
-  text-align: center;
-  padding: 20px;
-}
-
-.img-box {
-  padding: 15px;
-  border-radius: 20px;
-  display: inline-block;
-}
-
-.img-box img {
+.imagem img {
   max-height: 400px;
-  max-width: 100%;
+  width: 100%;
+  max-width: 320px;
   border-radius: 20%;
-  border: 6px solid var(--cor-primaria);
-  box-shadow: 0 0 15px var(--cor-secundaria);
+  border: 5px solid var(--cor-primaria);
+  
   transition: 0.3s ease;
 }
 
-.img-box img:hover {
-  box-shadow: 0 0 30px var(--cor-secundaria);
-}
-
-.informacoes-sobre-mim {
-  flex: 1 1 400px;
-  padding: 20px 30px;
+.texto {
+  max-width: 600px;
+  padding: 1rem;
   font-family: var(--fonte-secundaria);
 }
 
-.informacoes-sobre-mim p {
+.linha-texto {
   font-size: var(--fonte-normal);
-  margin-bottom: 20px;
   line-height: 1.7;
+  margin-bottom: 15px;
   color: #e4e4e4;
 }
 
-.botoes {
-  margin-top: 40px;
+.accordion-wrapper {
+  margin-top: 2rem;
 }
 
-.botao {
-  font-family: var(--fonte-primaria);
-  text-transform: uppercase;
+.botao-cv {
+  background: #111827;
+  border: 2px solid var(--cor-primaria);
   color: var(--cor-branca);
-  font-size: var(--fonte-normal);
-  font-weight: 800;
   padding: 12px 24px;
   border-radius: 10px;
-  letter-spacing: 1.5px;
-  border: 2px solid var(--cor-primaria);
-  background: transparent;
-  text-decoration: none;
-  text-shadow: 0 0 5px var(--cor-primaria);
-  transition: 0.2s ease;
-  box-shadow: 0 0 10px var(--cor-primaria);
-  display: inline-block;
+  font-size: var(--fonte-normal);
+  font-family: var(--fonte-primaria);
+  cursor: pointer;
+  box-shadow: 0 0 15px var(--cor-primaria);
+  text-shadow: 0 0 5px var(--cor-secundaria);
+  transition: 0.3s ease;
 }
 
-.botao:hover {
-  color: whitesmoke;
-  transform: scale(1.08);
+.botao-cv:hover {
+  transform: scale(1.05);
   text-shadow:
     0 0 10px #00bfff,
     0 0 10px #00bfff,
     0 0 10px #00bfff;
-  
-  
-  transition: all 0.5s ease;
+}
+
+.accordion-wrapper {
+  margin: 0,5rem;
+  padding: 1rem;
+}
+
+.accordion-content {
+  margin-top: 1rem;
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.cv-opcao {
+  background: transparent;
+  border: 2px solid var(--cor-secundaria);
+  color: var(--cor-branca);
+  padding: 10px 18px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-family: var(--fonte-primaria);
+  font-size: var(--fonte-normal);
+  transition: 0.3s;
+  box-shadow: 0 0 10px var(--cor-secundaria);
+}
+
+.cv-opcao:hover {
+  background: var(--cor-secundaria);
+  color: #000;
+  box-shadow: 0 0 20px var(--cor-secundaria);
 }
 </style>

@@ -82,11 +82,11 @@ function randomStyle() {
         <!-- Texto: Saudação, Nome, Título -->
         <div
           v-motion
-          :initial="{ opacity: 0, x: -850 }"
+          :initial="{ opacity: 0, x: -550 }"
           :enter="{
             opacity: 1,
             x: 0,
-            transition: { duration: 1200, easing: 'ease-out' }
+            transition: { duration: 1100, easing: 'ease-out' }
           }"
           class="texto-home"
         >
@@ -98,11 +98,11 @@ function randomStyle() {
           <!-- Redes sociais com animação encadeada -->
 <div
   v-motion
-  :initial="{ opacity: 0, y: 200 }"
+  :initial="{ opacity: 0, y: 300 }"
   :enter="{
     opacity: 1,
     y: 0,
-    transition: { duration: 1000, delay: 500, easing: 'ease-out' }
+    transition: { duration: 900, delay: 500, easing: 'ease-out' }
   }"
   class="redes-sociais"
 >
@@ -226,7 +226,7 @@ function randomStyle() {
   font-weight: 700;
   margin-bottom: 15px;
   color: var(--cor-primaria);
-  text-shadow: 0 0 35px var(--cor-primaria);
+  
 }
 
 .texto-home h2 {

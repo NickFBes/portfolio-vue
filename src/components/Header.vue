@@ -98,9 +98,9 @@ nav li a:hover {
   color: whitesmoke; /* preto */
   transform: scale(1.08); /* aumenta um pouco o tamanho */
   text-shadow:
-    0 0 10px #00bfff,
-    0 0 10px #00bfff,
-    0 0 10px #00bfff; /* neon azul suave */
+    0 0 3px #00bfff,
+    0 0 3px #00bfff,
+    0 0 3px #00bfff; /* neon azul suave */
   
   transition: all 0.5s ease;
 }
