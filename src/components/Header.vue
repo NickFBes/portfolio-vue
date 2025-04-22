@@ -21,7 +21,7 @@ const toggleTheme = () => {
   const theme = isDark.value ? 'dark' : 'light'
   document.documentElement.className = theme
   localStorage.setItem('theme', theme)
-  iconeTema.value = isDark.value ? 'fa-sun' : 'fa-moon'
+  iconeTema.value = isDark.value ? 'fa-moon' : 'fa-sun'
 }
 
 onMounted(() => {

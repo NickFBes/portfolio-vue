@@ -76,7 +76,7 @@ onMounted(() => {
               <h3>{{ projeto.titulo }}</h3>
               <div class="informacoes-projeto">
                 <p>{{ projeto.descricao }}</p>
-                <p>🔗 Link GitHub Pages</p>
+                
               </div>
             </a>
           </div>
@@ -161,9 +161,9 @@ onMounted(() => {
 }
 
 .projeto h3 {
-  font-size: 2rem;
+  font-size: 2.1rem;
   font-weight: 700;
-  color: var(--cor-primaria);
+  color: var(--cor-branca);
   padding: 1rem;
   text-align: center;
   background-color: var(--cor-fundo-escuro);
@@ -188,7 +188,7 @@ onMounted(() => {
 
 .swiper-button-next,
 .swiper-button-prev {
-  color: var(--cor-primaria);
+  color: white;
   width: 50px;
   height: 50px;
   background: rgba(0, 0, 0, 0.6);
