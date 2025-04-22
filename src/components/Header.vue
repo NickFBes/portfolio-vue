@@ -219,7 +219,7 @@ nav li a:hover {
   transition: all 0.3s ease;
   font-size: 0.8rem;
   font-family: var(--fonte-primaria);
-  box-shadow: 0 0 8px var(--cor-theme-box-shadow);
+  box-shadow: 0 0 10px var(--cor-theme-box-shadow);
   border: 1px solid var(--cor-theme-box-border);
 }
 
