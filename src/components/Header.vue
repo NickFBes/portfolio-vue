@@ -4,7 +4,7 @@ import { ref, onMounted, onBeforeUnmount } from 'vue'
 const menuAberto = ref(false)
 const larguraTela = ref(window.innerWidth)
 const isDark = ref(true)
-const iconeTema = ref('fa-sun') // Inicialmente no ícone de sol
+const iconeTema = ref('fa-sun') // Mostra o ícone para trocar para o claro
 
 const atualizarLargura = () => {
   larguraTela.value = window.innerWidth
@@ -18,10 +18,10 @@ const fecharMenu = () => {
 
 const toggleTheme = () => {
   isDark.value = !isDark.value
-  const theme = isDark.value ? 'dark' : 'light'
-  document.documentElement.className = theme
-  localStorage.setItem('theme', theme)
-  iconeTema.value = isDark.value ? 'fa-moon' : 'fa-sun'
+  const novoTema = isDark.value ? 'dark' : 'light'
+  document.documentElement.className = novoTema
+  localStorage.setItem('theme', novoTema)
+  iconeTema.value = isDark.value ? 'fa-sun' : 'fa-moon'
 }
 
 onMounted(() => {
@@ -29,7 +29,7 @@ onMounted(() => {
   const savedTheme = localStorage.getItem('theme') || 'dark'
   isDark.value = savedTheme === 'dark'
   document.documentElement.className = savedTheme
-  iconeTema.value = isDark.value ? 'fa-moon' : 'fa-sun'
+  iconeTema.value = isDark.value ? 'fa-sun' : 'fa-moon'
 })
 
 onBeforeUnmount(() => {
@@ -127,7 +127,7 @@ nav li a:hover {
 }
 
 .theme-toggle:hover {
-  transform: rotate(15deg) scale(1.4);
+  transform: rotate(-45deg) scale(1.1);
   filter: drop-shadow(0 0 10px var(--cor-theme-darklight));
 }
 

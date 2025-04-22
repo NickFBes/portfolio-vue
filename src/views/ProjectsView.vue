@@ -181,7 +181,7 @@ onMounted(() => {
 }
 
 .informacoes-projeto p {
-  color: var(--cor-primaria);
+  color: var(--cor-branca);
   font-size: 1.6rem;
   margin: 0;
 }
