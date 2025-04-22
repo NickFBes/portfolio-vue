@@ -2,14 +2,46 @@
 import { ref } from 'vue'
 
 const habilidades = ref([
-  { titulo: 'JavaScript', icone: 'devicon devicon-javascript-plain', descricao: 'Manipulação dinâmica e lógica de programação avançada.' },
-  { titulo: 'HTML5', icone: 'devicon devicon-html5-plain-wordmark', descricao: 'Criação de estruturas semânticas e acessíveis.' },
-  { titulo: 'CSS3', icone: 'devicon devicon-css3-plain-wordmark', descricao: 'Estilização moderna, animações e responsividade.' },
-  { titulo: 'GitHub', icone: 'devicon devicon-github-original', descricao: 'Controle de versão e colaboração em projetos open source.' },
-  { titulo: 'Git', icone: 'devicon devicon-git-plain', descricao: 'Gerenciamento de versões e fluxo de trabalho ágil.' },
-  { titulo: 'Vue.js', icone: 'devicon devicon-vuejs-plain', descricao: 'Framework progressivo para interfaces de usuário interativas.' },
-  { titulo: 'PHP', icone: 'devicon devicon-php-plain', descricao: 'Desenvolvimento back-end e integração de APIs.' },
-  { titulo: 'MySQL', icone: 'devicon devicon-mysql-plain-wordmark', descricao: 'Gerenciamento de banco de dados e modelagem relacional.' }
+  {
+    titulo: 'JavaScript',
+    icone: 'devicon devicon-javascript-plain',
+    descricao: 'Manipulation dynamique du DOM, logique de programmation avancée et création d\'applications web interactives.'
+  },
+  {
+    titulo: 'HTML5',
+    icone: 'devicon devicon-html5-plain-wordmark',
+    descricao: 'Création de structures sémantiques accessibles, respectant les bonnes pratiques de SEO et d\'accessibilité.'
+  },
+  {
+    titulo: 'CSS3',
+    icone: 'devicon devicon-css3-plain-wordmark',
+    descricao: 'Stylisation moderne avec animations fluides, techniques de responsivité avancées et design adaptatif.'
+  },
+  {
+    titulo: 'GitHub',
+    icone: 'devicon devicon-github-original',
+    descricao: 'Utilisation de GitHub pour le contrôle de version, la gestion de branches et la collaboration sur des projets open source.'
+  },
+  {
+    titulo: 'Git',
+    icone: 'devicon devicon-git-plain',
+    descricao: 'Gestion des versions de code source, résolution de conflits et adoption de workflows agiles comme Git Flow.'
+  },
+  {
+    titulo: 'Vue.js',
+    icone: 'devicon devicon-vuejs-plain',
+    descricao: 'Framework progressif pour créer des interfaces utilisateur dynamiques, modulaires et hautement réactives.'
+  },
+  {
+    titulo: 'PHP',
+    icone: 'devicon devicon-php-plain',
+    descricao: 'Développement back-end robuste, intégration avec bases de données et création d\'APIs sécurisées.'
+  },
+  {
+    titulo: 'MySQL',
+    icone: 'devicon devicon-mysql-plain-wordmark',
+    descricao: 'Gestion de bases de données relationnelles, conception de schémas optimisés et requêtes SQL performantes.'
+  }
 ])
 
 const ativoIndex = ref(null)
@@ -24,7 +56,7 @@ const toggleCard = (index) => {
   <section class="habilidades section" id="habilidades">
     <div class="container">
       <div class="section-title">
-        <h2>Competências</h2>
+        <h2>Competénces</h2>
       </div>
 
       <div class="container-habilidades">
