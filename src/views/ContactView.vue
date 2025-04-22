@@ -146,6 +146,7 @@ import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
   font-family: var(--fonte-secundaria);
   outline: none;
   transition: border 0.3s, box-shadow 0.3s;
+  color: var(--cor-branca);
 }
 
 .form input:focus,
