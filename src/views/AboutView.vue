@@ -1,5 +1,4 @@
 <script setup>
-import { useMotion, useMotionControls } from '@vueuse/motion'
 import { ref, nextTick } from 'vue'
 
 const mostrarAccordion = ref(false)
@@ -51,7 +50,7 @@ const linhasTexto = [
           <!-- Botão accordion -->
           <div class="accordion-wrapper"
           v-motion
-          :initial="{ opacity: 0, y: 450 }"
+          :initial="{ opacity: 0, y: 150 }"
           :enter="{
             opacity: 1,
             y: 0,

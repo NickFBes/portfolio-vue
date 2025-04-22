@@ -23,7 +23,8 @@
   text-align: center;
   font-family: var(--fonte-secundaria);
   color: var(--cor-branca);
-  box-shadow: inset 0 5px 20px var(--cor-footer-shadow);
+  box-shadow: 0 5px 20px var(--cor-footer-shadow);
+  
   border-radius: 5% 5% 0 0;
 }
 
