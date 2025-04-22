@@ -1,9 +1,9 @@
 <script setup>
-import { ref } from 'vue'
+import { ref } from "vue";
 
 const codeLines = ref([
   // Vue.js
-  "<template><div v-if=\"isVisible\">Bonjour Vue!</div></template>",
+  '<template><div v-if="isVisible">Bonjour Vue!</div></template>',
 
   // PHP
   "<?php echo htmlspecialchars($_POST['name']); ?>",
@@ -21,7 +21,7 @@ const codeLines = ref([
   "function greet(name: string): string { return `Hello, ${name}`; }",
 
   // Python
-  "with open('data.txt') as file: data = file.read()",  
+  "with open('data.txt') as file: data = file.read()",
 
   // C++
   "std::vector<int> nums = {1, 2, 3}; std::sort(nums.begin(), nums.end());",
@@ -30,13 +30,13 @@ const codeLines = ref([
   "let numbers = vec![1, 2, 3]; let doubled: Vec<_> = numbers.iter().map(|x| x * 2).collect();",
 
   // Kotlin
-  "val names = listOf(\"Jean\", \"Marie\").map { it.uppercase() }",
+  'val names = listOf("Jean", "Marie").map { it.uppercase() }',
 
   // Bash
   "grep -Ri 'error' ./logs/",
 
   // HTML
-  "<input type=\"text\" placeholder=\"Votre email\" required />",
+  '<input type="text" placeholder="Votre email" required />',
 
   // CSS
   ".highlight { background-color: #01b7ff; color: white; }",
@@ -45,32 +45,32 @@ const codeLines = ref([
   "let sum = (1...5).reduce(0, +)",
 
   // Go
-  "fmt.Println(strings.ToUpper(\"bonjour\"))",
+  'fmt.Println(strings.ToUpper("bonjour"))',
 
   // Easter eggs (3 discretas e engraçadas)
   "if (!coffee) throw new Error('No build before espresso');",
   "echo 'alias deploy=\"echo non\"' >> ~/.bashrc",
-  "// TODO: Replace hacks with proper code before 2040"
+  "// TODO: Replace hacks with proper code before 2040",
 ]);
 
 // Função que retorna estilos aleatórios para cada linha
 function randomStyle() {
-  const top = Math.floor(Math.random() * 130)
-  const left = Math.floor(Math.random() * 100)
-  const size = (Math.random() * 0.7 + 1).toFixed(2)
-  const delay = (Math.random() * 6).toFixed(2)
-  
+  const top = Math.floor(Math.random() * 130);
+  const left = Math.floor(Math.random() * 100);
+  const size = (Math.random() * 0.7 + 1).toFixed(2);
+  const delay = (Math.random() * 6).toFixed(2);
+
   // 30% de chance de aparecer na frente da imagem
-  const isInFront = Math.random() < 0.3
-  const zIndex = isInFront ? 2 : -1
+  const isInFront = Math.random() < 0.3;
+  const zIndex = isInFront ? 2 : -1;
 
   return {
     top: `${top}%`,
     left: `${left}%`,
     transform: `scale(${size})`,
     animationDelay: `${delay}s`,
-    zIndex
-  }
+    zIndex,
+  };
 }
 </script>
 
@@ -78,15 +78,14 @@ function randomStyle() {
   <section class="home section">
     <div class="container">
       <div class="row full-screen alinhar-itens-no-centro">
-        
         <!-- Texto: Saudação, Nome, Título -->
         <div
           v-motion
-          :initial="{ opacity: 0, x: -550 }"
+          :initial="{ opacity: 0, x: -1550 }"
           :enter="{
             opacity: 1,
             x: 0,
-            transition: { duration: 1100, easing: 'ease-out' }
+            transition: { duration: 1100, easing: 'ease-out' },
           }"
           class="texto-home"
         >
@@ -94,23 +93,22 @@ function randomStyle() {
           <h1>Je suis Nicolas Bes</h1>
           <h2>Developpeur Web en formation.</h2>
 
-          
           <!-- Redes sociais com animação encadeada -->
-<div
-  v-motion
-  :initial="{ opacity: 0, y: 300 }"
-  :enter="{
-    opacity: 1,
-    y: 0,
-    transition: { duration: 900, delay: 500, easing: 'ease-out' }
-  }"
-  class="redes-sociais"
->
-  <a href="#"><font-awesome-icon icon="fa-brands fa-linkedin" /></a>
-  <a href="#"><font-awesome-icon icon="fa-brands fa-whatsapp" /></a>
-  <a href="#"><font-awesome-icon icon="fa-brands fa-github" /></a>
-  <a href="#"><font-awesome-icon icon="fa-brands fa-instagram" /></a>
-</div>
+          <div
+            v-motion
+            :initial="{ opacity: 0, y: 300 }"
+            :enter="{
+              opacity: 1,
+              y: 0,
+              transition: { duration: 900, delay: 500, easing: 'ease-out' },
+            }"
+            class="redes-sociais"
+          >
+            <a href="#"><font-awesome-icon icon="fa-brands fa-linkedin" /></a>
+            <a href="#"><font-awesome-icon icon="fa-brands fa-whatsapp" /></a>
+            <a href="#"><font-awesome-icon icon="fa-brands fa-github" /></a>
+            <a href="#"><font-awesome-icon icon="fa-brands fa-instagram" /></a>
+          </div>
         </div>
 
         <!-- Imagem com animação após redes sociais -->
@@ -119,15 +117,15 @@ function randomStyle() {
           :initial="{ opacity: 0, x: 550 }"
           :enter="{
             opacity: 1,
-            
+
             x: 0,
-            transition: { duration: 1000, delay: 500, easing: 'ease-out' }
+            transition: { duration: 1000, delay: 500, easing: 'ease-out' },
           }"
           class="img-home"
         >
           <div class="img-box hover-effect">
             <img class="outer-shadow" src="/images/nico2.png" alt="photo" />
-            
+
             <!-- Linhas de código animadas ao redor -->
             <div class="code-lines">
               <span
@@ -139,11 +137,8 @@ function randomStyle() {
                 {{ line }}
               </span>
             </div>
-
-           
           </div>
         </div>
-
       </div>
     </div>
   </section>
@@ -151,7 +146,7 @@ function randomStyle() {
 
 <style scoped>
 .home {
-  min-height: calc(100vh - 140px);
+  min-height: calc(100vh - 200px);
   background-color: var(--cor-fundo-escuro);
   color: var(--cor-branca);
   display: flex;
@@ -159,7 +154,6 @@ function randomStyle() {
   justify-content: center;
   padding: 60px 20px;
   overflow: hidden;
-  
 }
 
 .container {
@@ -171,11 +165,10 @@ function randomStyle() {
 .full-screen {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center; 
+  justify-content: center;
   align-items: center;
   width: 100%;
   backdrop-filter: blur(6px);
-  
 }
 
 .texto-home {
@@ -183,25 +176,21 @@ function randomStyle() {
   padding-inline: 30px;
   padding-block: 20px;
   max-width: 520px;
-  
+
   z-index: 2;
   text-align: left;
- 
 }
 
 .img-home {
   flex: 1 1 50%;
   padding: 20px;
   text-align: center;
-  
 }
 
 .img-home .img-box {
- 
   max-width: 380px;
-  
+
   padding: 10px;
-  
 }
 
 .img-home .img-box img {
@@ -226,7 +215,6 @@ function randomStyle() {
   font-weight: 700;
   margin-bottom: 15px;
   color: var(--cor-primaria);
-  
 }
 
 .texto-home h2 {
@@ -273,9 +261,9 @@ function randomStyle() {
 
 .code-line {
   position: absolute;
-  font-family: 'Courier New', monospace;
+  font-family: "Courier New", monospace;
   font-size: 1rem;
-  color: #00fff7;
+  color: var(--cor-codelines-home);
   opacity: 1;
   white-space: nowrap;
   animation: floatLine 8s ease-in-out infinite;
@@ -304,7 +292,6 @@ function randomStyle() {
     transform: translateY(0px) translateX(0px) rotate(0deg);
   }
 }
-
 
 /* Responsivo */
 @media (max-width: 900px) {

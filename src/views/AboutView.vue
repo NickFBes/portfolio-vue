@@ -79,12 +79,12 @@ const linhasTexto = [
 <style scoped>
 .section {
   padding: 5rem 2rem;
-  color: var(--cor-branca);
+  color: var(--cor-primaria);
+  min-height: calc(100vh - 200px);
 }
 
-.section-title {
-  text-align: center;
-  margin-bottom: 3rem;
+.section-title h2 {
+  color: var(--cor-primaria);
 }
 
 .section-title h2 {
@@ -121,7 +121,7 @@ const linhasTexto = [
   font-size: var(--fonte-normal);
   line-height: 1.7;
   margin-bottom: 15px;
-  color: #e4e4e4;
+  color: var(--cor-branca);
 }
 
 .accordion-wrapper {
@@ -129,7 +129,7 @@ const linhasTexto = [
 }
 
 .botao-cv {
-  background: #111827;
+  background: var(--cor-fundo-escuro);
   border: 2px solid var(--cor-primaria);
   color: var(--cor-branca);
   padding: 12px 24px;

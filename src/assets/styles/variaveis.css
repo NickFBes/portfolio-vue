@@ -1,21 +1,55 @@
 :root {
-    --cor-primaria: #4863fc;
-    --cor-secundaria: #01b7ff;    
-    --cor-branca: #fff;
-    --cor-fundo-escuro: #040203;    
-    --cor-fundo-cinza-escuro: #282828;
-    --cor-fundo-cinza-claro: #353535;    
-  }
-    
-  :root {
-    --fonte-primaria: 'Tektur', sans-serif;
-    --fonte-secundaria: 'Roboto', sans-serif;
-    --fonte-gigante: 4.5rem;
-    --fonte-extra-grande: 3rem;
-    --fonte-grande: 2.4rem;
-    --fonte-normal: 1.6rem;
-  }
+  /* Cores */
+  --cor-primaria: #4863fc;
+  --cor-secundaria: #01b7ff;
+  --cor-branca: #fff;
+  --cor-fundo-escuro: #040203;
+  --cor-fundo-cinza-escuro: #282828;
+  --cor-fundo-cinza-claro: #353535;
+  --cor-fundo-header: linear-gradient(0deg, #0b0f2b 0%, #111827 100%);
+  --cor-fundo-footer: linear-gradient(180deg, #0b0f2b 0%, #111827 100%);
+  --cor-codelines-home: #00fff7;
+  --cor-fundo-infoskills: linear-gradient(145deg, rgba(30,30,30,0.7), rgba(0, 0, 0, 0.5));
+  --cor-hover-texto: var(--cor-secundaria);
+  --cor-hover-glow: #00bfff;
+  --cor-footer-shadow: rgba(0, 183, 255, 0.2);
+  --cor-navlisthover: whitesmoke;
+  --cor-theme-darklight: rgba(255, 255, 0, 0.959);
+
+  /* Fontes */
+  --fonte-primaria: 'Orbitron', sans-serif;
+  --fonte-secundaria: 'Rajdhani', sans-serif;
+  --fonte-gigante: 4.5rem;
+  --fonte-extra-grande: 3rem;
+  --fonte-grande: 2.4rem;
+  --fonte-normal: 1.6rem;
+
+  /* Outros */
+  --mobile-padding: 30px;
+}
+
+/* 🌞 Tema Claro */
+:root.light {
+  /* Cores principais */
+  --cor-primaria: #1d1d1d; /* Texto principal */
+  --cor-secundaria: #007acc; /* Azul moderno, elegante e visível */
+  --cor-branca: #121212; /* Texto escuro, mas não 100% preto para suavizar */
   
-  :root {
-    --mobile-padding: 30px;
-  }
+  /* Fundos */
+  --cor-fundo-escuro: #f2f4f8; /* Fundo geral claro */
+  --cor-fundo-cinza-escuro: #d9dee3;
+  --cor-fundo-cinza-claro: #e6ebf0;
+  --cor-fundo-header: linear-gradient(0deg, #d6e4ff 0%, #ffffff 100%);
+  --cor-fundo-footer: linear-gradient(180deg, #d6e4ff 0%, #ffffff 100%);
+  --cor-footer-shadow: rgba(0, 122, 204, 0.2);
+  --cor-theme-darklight: blue;
+
+  /* Códigos e elementos especiais */
+  --cor-codelines-home: #1c1c1c;
+  --cor-fundo-infoskills: linear-gradient(145deg, rgba(200, 200, 200, 0.6), rgba(255, 255, 255, 0.4));
+
+  /* Hover e efeitos */
+  --cor-hover-texto: var(--cor-secundaria);
+  --cor-hover-glow: rgba(0, 122, 204, 0.6);
+  --cor-navlisthover: black;
+}

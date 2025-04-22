@@ -3,6 +3,8 @@ import { ref, onMounted, onBeforeUnmount } from 'vue'
 
 const menuAberto = ref(false)
 const larguraTela = ref(window.innerWidth)
+const isDark = ref(true)
+const iconeTema = ref('fa-sun') // Inicialmente no ícone de sol
 
 const atualizarLargura = () => {
   larguraTela.value = window.innerWidth
@@ -14,8 +16,20 @@ const fecharMenu = () => {
   }
 }
 
+const toggleTheme = () => {
+  isDark.value = !isDark.value
+  const theme = isDark.value ? 'dark' : 'light'
+  document.documentElement.className = theme
+  localStorage.setItem('theme', theme)
+  iconeTema.value = isDark.value ? 'fa-sun' : 'fa-moon'
+}
+
 onMounted(() => {
   window.addEventListener('resize', atualizarLargura)
+  const savedTheme = localStorage.getItem('theme') || 'dark'
+  isDark.value = savedTheme === 'dark'
+  document.documentElement.className = savedTheme
+  iconeTema.value = isDark.value ? 'fa-moon' : 'fa-sun'
 })
 
 onBeforeUnmount(() => {
@@ -42,8 +56,11 @@ onBeforeUnmount(() => {
             <li><router-link to="/habilidades" @click="fecharMenu">Compétences</router-link></li>
             <li><router-link to="/projetos" @click="fecharMenu">Mes projets</router-link></li>
             <li><router-link to="/contact" @click="fecharMenu">Contact</router-link></li>
-          
-            
+            <li>
+              <button class="theme-toggle" @click="toggleTheme">
+                <font-awesome-icon :icon="iconeTema" />
+              </button>
+            </li>
           </ul>
         </nav>
       </div>
@@ -51,11 +68,10 @@ onBeforeUnmount(() => {
   </header>
 </template>
 
-
 <style scoped>
 .header {
   padding: 20px 30px;
-  background: linear-gradient(0deg, #0b0f2b 0%, #111827 100%);
+  background: var(--cor-fundo-header);
   backdrop-filter: blur(8px);
   border-bottom: 1px solid var(--cor-primaria);
   box-shadow: 0 0 20px var(--cor-secundaria);
@@ -64,15 +80,15 @@ onBeforeUnmount(() => {
 }
 
 .logo-img {
-  height: 70px;
+  height: 60px;
   width: auto;
-  filter: drop-shadow(0 0 5px var(--cor-primaria));
+  filter: drop-shadow(0 0 5px var(--cor-secundaria));
   transition: 0.3s ease;
 }
 
 .logo-link:hover .logo-img {
   transform: scale(1.05);
-  filter: drop-shadow(0 0 15px var(--cor-secundaria));
+  filter: drop-shadow(0 0 10px var(--cor-hover-glow));
 }
 
 nav ul {
@@ -90,20 +106,29 @@ nav li a {
   padding: 8px 16px;
   border-radius: 10px;
   letter-spacing: 1.5px;
-  text-shadow: 0 0 5px var(--cor-primaria);
+  text-shadow: 0 0 2px var(--cor-primaria);
   transition: 0.2s ease;
 }
 
 nav li a:hover {
-  
-  color: whitesmoke; /* preto */
-  transform: scale(1.08); /* aumenta um pouco o tamanho */
-  text-shadow:
-    0 0 3px #00bfff,
-    0 0 3px #00bfff,
-    0 0 3px #00bfff; /* neon azul suave */
-  
+  color: var(--cor-navlisthover);
+  transform: scale(1.08);
+  text-shadow: 0 0 3px #00bfff, 0 0 3px #00bfff;
   transition: all 0.5s ease;
+}
+
+.theme-toggle {
+  background: transparent;
+  border: none;
+  font-size: 2.6rem;
+  color: var(--cor-theme-darklight);
+  cursor: pointer;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.theme-toggle:hover {
+  transform: rotate(15deg) scale(1.4);
+  filter: drop-shadow(0 0 10px var(--cor-theme-darklight));
 }
 
 .menu {
@@ -165,7 +190,7 @@ nav li a:hover {
     position: fixed;
     top: 80px;
     right: 20px;
-    background: rgba(4, 2, 3, 0.95);
+    background: color-mix(in srgb, var(--cor-fundo-escuro) 95%, transparent);
     backdrop-filter: blur(12px);
     border: 1px solid var(--cor-primaria);
     box-shadow: 0 0 15px var(--cor-secundaria);
@@ -191,15 +216,24 @@ nav li a:hover {
   }
 
   nav li a {
-    font-size: var(--fonte-grande);
-    font-family: var(--fonte-primaria);
-    display: block;
-    width: 100%;
-    text-align: center;
-    border-bottom: 2px solid var(--cor-primaria);
-    border-radius: 10px;
-    padding: 12px;
-  }
+  font-family: var(--fonte-primaria);
+  text-transform: uppercase;
+  color: var(--cor-branca);
+  font-size: var(--fonte-normal);
+  font-weight: 600;
+  padding: 8px 16px;
+  border-radius: 10px;
+  letter-spacing: 1.5px;
+  text-shadow: 0 0 5px var(--cor-primaria);
+  transition: all 0.3s ease;
+}
+
+nav li a:hover {
+  color: var(--cor-hover-texto);
+  transform: scale(1.08);
+  text-shadow: 0 0 5px var(--cor-hover-glow), 0 0 5px var(--cor-hover-glow);
+}
+
 }
 
 </style>

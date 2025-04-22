@@ -68,6 +68,7 @@ const toggleCard = (index) => {
   background-color: var(--cor-fundo-escuro);
   padding: 5rem 2rem;
   color: var(--cor-branca);
+  min-height: calc(100vh - 200px);
 }
 
 .section-title h2 {
@@ -90,7 +91,7 @@ const toggleCard = (index) => {
 }
 
 .informacoes {
-  background: linear-gradient(145deg, rgba(30,30,30,0.7), rgba(0, 0, 0, 0.5));
+  background: var(--cor-fundo-infoskill);
   border: 1px solid rgba(1, 183, 255, 0.15);
   border-radius: 20px;
   padding: 25px 18px;
@@ -110,14 +111,14 @@ const toggleCard = (index) => {
 
 .logo i {
   font-size: 4rem;
-  color: var(--cor-primaria);
+  color: var(--cor-secundaria);
   transition: color 0.4s ease, text-shadow 0.4s ease;
   text-shadow: 0 0 6px rgba(72, 99, 252, 0.2);
 }
 
 .informacoes:hover .logo i {
   color: var(--cor-branca);
-  text-shadow: 0 0 10px var(--cor-primaria);
+  text-shadow: 0 0 10px var(--cor-secundaria);
 }
 
 h3 {

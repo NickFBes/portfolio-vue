@@ -5,21 +5,22 @@ import './assets/styles/globais.css'
 import './assets/styles/reset.css'
 import './assets/styles/variaveis.css'
 
+// FontAwesome
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { fab } from '@fortawesome/free-brands-svg-icons'
+import { faEnvelope, faPhone, faSun, faMoon, } from '@fortawesome/free-solid-svg-icons'
+
+// Motion Plugin
 import { MotionPlugin } from '@vueuse/motion'
 
-
-
-// Adiciona os ícones à biblioteca
-library.add(fab)
+// Adiciona ícones à biblioteca
+library.add(fab, faEnvelope, faPhone, faSun, faMoon)
 
 // Cria o app
 const app = createApp(App)
 
 // Usa plugins e registra componentes
-
 app.use(router)
 app.use(MotionPlugin)
 app.component('font-awesome-icon', FontAwesomeIcon)

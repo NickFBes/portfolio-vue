@@ -4,73 +4,59 @@
 <template>
   <footer class="footer">
     <div class="container">
-      <h2>Envoyez-moi un message !</h2>
-      <div class="social-links">
-        <a href="#" aria-label="LinkedIn">
-          <font-awesome-icon :icon="['fab', 'linkedin']" />
-        </a>
-        <a href="#" aria-label="WhatsApp">
-          <font-awesome-icon :icon="['fab', 'whatsapp']" />
-        </a>
-        <a href="#" aria-label="GitHub">
-          <font-awesome-icon :icon="['fab', 'github']" />
-        </a>
-        <a href="#" aria-label="Instagram">
-          <font-awesome-icon :icon="['fab', 'instagram']" />
-        </a>
-      </div>
+      <h2 class="footer-title">
+        <router-link to="/contact" class="contact-link" @click="fecharMenu">
+          Envoyez-moi un message !
+          <br>
+        </router-link>
+      </h2>
+      <p class="footer-bottom">All rights reserved © Nicolas Bes 2025</p>
     </div>
   </footer>
 </template>
 
 <style scoped>
 .footer {
-  
-  text-align: center;
-  background: linear-gradient(180deg, #0b0f2b 0%, #111827 100%);
+  background: var(--cor-fundo-footer);
   border-top: 1px solid var(--cor-primaria);
-  box-shadow: inset 0 5px 20px rgba(0, 183, 255, 0.2);
+  padding: 2rem;
+  text-align: center;
+  font-family: var(--fonte-secundaria);
+  color: var(--cor-branca);
+  box-shadow: inset 0 5px 20px var(--cor-footer-shadow);
   border-radius: 5% 5% 0 0;
 }
 
-.footer .container {
-  padding: 5rem 2rem;
+.footer-title {
+  margin: 0;
+  font-size: 2.4rem;
+  font-weight: bold;
 }
 
-.footer h2 {
-  font-family: var(--fonte-secundaria);
-  font-size: var(--fonte-normal);
-  font-weight: 700;
-  letter-spacing: 2px;
-  margin-bottom: 2rem;
+.contact-link {
   color: var(--cor-branca);
-  text-shadow: 0 0 5px var(--cor-primaria), 0 0 10px var(--cor-secundaria);
+  text-decoration: none;
+  text-shadow: 0 0 1px var(--cor-primaria);
+  transition: all 0.3s ease;
 }
 
-/* Redes sociais */
-.social-links {
-  display: flex;
-  justify-content: center;
-  gap: 2rem;
-  flex-wrap: wrap;
-}
-
-.social-links a {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 3rem;
-  color: var(--cor-branca);
+.contact-link:hover {
+  color: var(--cor-navlisthover);
+  transform: scale(1.08);
+  text-shadow: 0 0 3px #00bfff, 0 0 3px #00bfff;
   transition: all 0.5s ease;
 }
 
-.social-links a:hover {
-  transform: scale(1.1);
+.contact-sub {
+  font-size: 1.95rem;
+  display: block;
+  margin-top: 0.3rem;
 }
 
-.social-links a:hover svg {
-  color: whitesmoke;
-  filter: drop-shadow(0 0 3px #00bfff) drop-shadow(0 0 3px #00bfff);
-  transition: all 0.2s ease;
+.footer-bottom {
+  margin-top: 1.5rem;
+  font-size: 1.2rem;
+  opacity: 0.9;
 }
+
 </style>

@@ -1,31 +1,6 @@
 <script setup>
-import { ref } from 'vue'
-
-const codeLines = ref([
-  "<form><input type='text' placeholder='Votre nom'></form>",
-  "document.querySelector('#form').submit();",
-  "fetch('/send', { method: 'POST' });",
-  "echo 'Merci pour votre message ';",
-  "// TODO: Send cookies with response 🍪",
-  "<button type='submit'>Envoyer</button>",
-  "if (!message) alert('Rédige un message d'abord');",
-])
-
-function randomStyle() {
-  const top = Math.floor(Math.random() * 130)
-  const left = Math.floor(Math.random() * 100)
-  const size = (Math.random() * 0.7 + 1).toFixed(2)
-  const delay = (Math.random() * 6).toFixed(2)
-  const zIndex = Math.random() < 0.3 ? 2 : -1
-
-  return {
-    top: `${top}%`,
-    left: `${left}%`,
-    transform: `scale(${size})`,
-    animationDelay: `${delay}s`,
-    zIndex
-  }
-}
+import { ref } from "vue";
+import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 </script>
 
 <template>
@@ -39,7 +14,7 @@ function randomStyle() {
           :enter="{
             opacity: 1,
             x: 0,
-            transition: { duration: 1000, easing: 'ease-out' }
+            transition: { duration: 1000, easing: 'ease-out' },
           }"
           class="form-contact"
         >
@@ -49,34 +24,60 @@ function randomStyle() {
             <input type="text" placeholder="Votre nom" required />
             <input type="email" placeholder="Votre e-mail" required />
             <textarea placeholder="Votre message" rows="5" required></textarea>
-            <button type="submit">Envoyer ✉️</button>
+            <button type="submit">Envoyer</button>
           </form>
         </div>
 
-        <!-- Imagem + Códigos -->
+        <!-- Informações de Contato -->
         <div
           v-motion
           :initial="{ opacity: 0, x: 500 }"
           :enter="{
             opacity: 1,
             x: 0,
-            transition: { duration: 1000, delay: 400, easing: 'ease-out' }
+            transition: { duration: 1000, delay: 400, easing: 'ease-out' },
           }"
-          class="img-contact"
+          class="info-contact"
         >
-          <div class="img-box hover-effect">
-            <img class="outer-shadow" src="/images/nico2.png" alt="photo" />
-            <div class="code-lines">
-              <span
-                v-for="(line, index) in codeLines"
-                :key="index"
-                class="code-line"
-                :style="randomStyle()"
-              >
-                {{ line }}
-              </span>
-            </div>
-          </div>
+          <h2>Mes réseaux</h2>
+          <ul class="contact-links">
+            <li>
+              <a href="mailto:exemple@email.com" target="_blank">
+                <font-awesome-icon icon="fa-solid fa-envelope" />
+                exemple@email.com
+              </a>
+            </li>
+            <li>
+              <a href="tel:+33000000000" target="_blank">
+                <font-awesome-icon icon="fa-solid fa-phone" />
+                +33 0 00 00 00 00
+              </a>
+            </li>
+            <li>
+              <a href="https://linkedin.com/in/exemple" target="_blank">
+                <font-awesome-icon icon="fa-brands fa-linkedin" />
+                LinkedIn
+              </a>
+            </li>
+            <li>
+              <a href="https://wa.me/33000000000" target="_blank">
+                <font-awesome-icon icon="fa-brands fa-whatsapp" />
+                WhatsApp
+              </a>
+            </li>
+            <li>
+              <a href="https://github.com/exemple" target="_blank">
+                <font-awesome-icon icon="fa-brands fa-github" />
+                GitHub
+              </a>
+            </li>
+            <li>
+              <a href="https://instagram.com/exemple" target="_blank">
+                <font-awesome-icon icon="fa-brands fa-instagram" />
+                Instagram
+              </a>
+            </li>
+          </ul>
         </div>
       </div>
     </div>
@@ -88,7 +89,7 @@ function randomStyle() {
   background-color: var(--cor-fundo-escuro);
   color: var(--cor-branca);
   padding: 60px 20px;
-  min-height: 100vh;
+  min-height: calc(100vh - 200px);
   overflow: hidden;
 }
 
@@ -103,30 +104,30 @@ function randomStyle() {
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  backdrop-filter: blur(6px);
+  gap: 30px;
 }
 
-.form-contact {
-  flex: 1 1 50%;
-  padding-inline: 30px;
-  padding-block: 20px;
+.form-contact,
+.info-contact {
+  flex: 1 1 45%;
+  padding: 20px 30px;
   max-width: 520px;
-  z-index: 2;
-  text-align: left;
 }
 
-.form-contact h1 {
+.form-contact h1,
+.info-contact h2 {
   font-family: var(--fonte-primaria);
   font-size: var(--fonte-gigante);
-  margin-bottom: 10px;
   color: var(--cor-primaria);
+  margin-bottom: 10px;
 }
 
 .form-contact p {
   font-family: var(--fonte-secundaria);
   font-size: var(--fonte-media);
+  font-weight: 600;
+  color: var(--cor-branca);
   margin-bottom: 20px;
-  color: #ccc;
 }
 
 .form {
@@ -141,11 +142,10 @@ function randomStyle() {
   border: 1px solid var(--cor-primaria);
   padding: 0.8rem 1rem;
   border-radius: 0.8rem;
-  color: white;
-  font-size: 1rem;
+  font-size: 2rem;
+  font-family: var(--fonte-secundaria);
   outline: none;
   transition: border 0.3s, box-shadow 0.3s;
-  font-family: var(--fonte-secundaria);
 }
 
 .form input:focus,
@@ -162,99 +162,71 @@ function randomStyle() {
   border-radius: 0.8rem;
   cursor: pointer;
   font-weight: bold;
-  transition: background-color 0.3s;
   font-family: var(--fonte-secundaria);
+  transition: background-color 0.3s;
 }
 
 .form button:hover {
+  filter: brightness(1.5) drop-shadow(0 0 2px var(--cor-primaria));
   background-color: var(--cor-secundaria);
+  color: whitesmoke;
+  filter: drop-shadow(0 0 10px #00bfff);
+  transition: all 0.4s ease;
 }
 
-/* Imagem + código animado */
-.img-contact {
-  flex: 1 1 50%;
-  padding: 20px;
-  text-align: center;
+/* Contatos */
+.contact-links {
+  list-style: none;
+  padding: 0;
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
 }
 
-.img-contact .img-box {
-  max-width: 380px;
-  margin: auto;
-  position: relative;
-  padding: 10px;
+.contact-links li a {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  color: var(--cor-branca);
+  text-decoration: none;
+  font-size: 1.8rem;
+  font-family: var(--fonte-secundaria);
+  transition: color 0.3s;
 }
 
-.img-contact img {
-  width: 100%;
-  border-radius: 20%;
-  border: 4px solid var(--cor-primaria);
-  box-shadow: 0 0 15px var(--cor-secundaria);
-  z-index: 1;
+.contact-links li a:hover {
+  filter: brightness(1.5) drop-shadow(0 0 2px var(--cor-primaria));
 }
 
-/* Código animado */
-.code-lines {
-  position: absolute;
-  top: -40px;
-  left: -200px;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
+.contact-links svg {
+  font-size: 2.3rem;
 }
 
-.code-line {
-  position: absolute;
-  font-family: 'Courier New', monospace;
-  font-size: 1rem;
-  color: #00fff7;
-  opacity: 1;
-  white-space: nowrap;
-  animation: floatLine 8s ease-in-out infinite;
-  filter: drop-shadow(0 0 3px #01b7ff);
-  max-width: 250px;
-}
-
-@keyframes floatLine {
-  0% {
-    transform: translateY(0px) translateX(0px) rotate(0deg);
-    opacity: 0;
-  }
-  25% {
-    opacity: 1;
-  }
-  50% {
-    transform: translateY(-10px) translateX(10px) rotate(1deg);
-    opacity: 1;
-  }
-  75% {
-    transform: translateY(10px) translateX(-10px) rotate(-1deg);
-    opacity: 0.8;
-  }
-  100% {
-    opacity: 0;
-    transform: translateY(0px) translateX(0px) rotate(0deg);
-  }
+.contact-links a:hover svg {
+  color: whitesmoke;
+  filter: drop-shadow(0 0 10px #00bfff);
+  transition: all 0.4s ease;
 }
 
 /* Responsivo */
 @media (max-width: 900px) {
   .full-screen {
     flex-direction: column;
-    text-align: center;
   }
 
   .form-contact,
-  .img-contact {
+  .info-contact {
     flex: 1 1 100%;
     text-align: center;
   }
 
-  .img-contact {
-    margin-top: 40px;
+  .contact-links {
+    align-items: center;
   }
 
-  .img-contact .img-box {
-    max-width: 320px;
+  .contact-links li a {
+    justify-content: center;
   }
 }
 </style>

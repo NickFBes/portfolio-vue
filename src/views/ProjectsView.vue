@@ -92,7 +92,7 @@ onMounted(() => {
 
 <style scoped>
 .projetos.section {
-  min-height: 100vh;
+  min-height: calc(100vh - 200px);
   padding: 5rem 2rem;
   display: flex;
   flex-direction: column;
@@ -140,6 +140,10 @@ onMounted(() => {
   padding-bottom: 1rem;
 }
 
+.projeto:hover{
+  transform: scale(1.05);
+}
+
 .projeto-link {
   display: flex;
   flex-direction: column;
@@ -177,7 +181,8 @@ onMounted(() => {
 }
 
 .informacoes-projeto p {
-  font-size: 1.4rem;
+  color: var(--cor-primaria);
+  font-size: 1.6rem;
   margin: 0;
 }
 
