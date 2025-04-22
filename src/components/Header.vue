@@ -3,8 +3,8 @@ import { ref, onMounted, onBeforeUnmount } from 'vue'
 
 const menuAberto = ref(false)
 const larguraTela = ref(window.innerWidth)
-const isDark = ref(true)
-const iconeTema = ref('fa-sun') // Mostra o ícone para trocar para o claro
+const isDark = ref(localStorage.getItem('theme') === 'dark')
+const iconeTema = ref(isDark.value ? 'fa-sun' : 'fa-moon')
 
 const atualizarLargura = () => {
   larguraTela.value = window.innerWidth
@@ -26,9 +26,7 @@ const toggleTheme = () => {
 
 onMounted(() => {
   window.addEventListener('resize', atualizarLargura)
-  const savedTheme = localStorage.getItem('theme') || 'dark'
-  isDark.value = savedTheme === 'dark'
-  document.documentElement.className = savedTheme
+  document.documentElement.className = isDark.value ? 'dark' : 'light'
   iconeTema.value = isDark.value ? 'fa-sun' : 'fa-moon'
 })
 
