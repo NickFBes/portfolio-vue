@@ -1,5 +1,5 @@
 <script setup>
-import { ref, onMounted, onBeforeUnmount } from 'vue'
+import { ref, computed, onMounted, onBeforeUnmount } from 'vue'
 
 const menuAberto = ref(false)
 const larguraTela = ref(window.innerWidth)
@@ -17,6 +17,8 @@ const obterTemaInicial = () => {
 const isDark = ref(obterTemaInicial())
 const iconeTema = ref(isDark.value ? 'fa-sun' : 'fa-moon')
 
+const textoTema = computed(() => (isDark.value ? 'Mode sombre' : 'Mode clair'))
+
 const atualizarLargura = () => {
   larguraTela.value = window.innerWidth
 }
@@ -29,7 +31,7 @@ const fecharMenu = () => {
 
 const aplicarTema = () => {
   document.documentElement.className = isDark.value ? 'dark' : 'light'
-  iconeTema.value = isDark.value ? 'fa-sun' : 'fa-moon'
+  iconeTema.value = isDark.value ? 'fa-moon' : 'fa-sun'
 }
 
 const toggleTheme = () => {
@@ -48,6 +50,7 @@ onBeforeUnmount(() => {
   window.removeEventListener('resize', atualizarLargura)
 })
 </script>
+
 
 <template>
   <header class="header">
@@ -70,9 +73,10 @@ onBeforeUnmount(() => {
         </nav>
 
         <div class="actions">
-          <button class="theme-toggle" @click="toggleTheme">
-            <font-awesome-icon :icon="iconeTema" />
-          </button>
+          <div class="theme-box" @click="toggleTheme">
+  <font-awesome-icon :icon="iconeTema" class="theme-icon" />
+  <span class="theme-text">{{ textoTema }}</span>
+</div>
 
           <div class="menu" @click="menuAberto = !menuAberto">
             <span class="hamburguer" :class="{ ativo: menuAberto }"></span>
@@ -201,6 +205,38 @@ nav li a:hover {
 .theme-toggle:hover {
   transform: rotate(-45deg) scale(1.1);
   filter: drop-shadow(0 0 10px var(--cor-theme-darklight));
+}
+
+.theme-box {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 12px;
+  border-radius: 20px;
+  background-color: var(--cor-theme-box-bg);
+  color: var(--cor-theme-box-text);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 0.8rem;
+  font-family: var(--fonte-primaria);
+  box-shadow: 0 0 8px var(--cor-theme-box-shadow);
+  border: 1px solid var(--cor-theme-box-border);
+}
+
+.theme-icon {
+  font-size: 1.4rem;
+  transition: transform 0.3s ease, filter 0.3s ease;
+  color: var(--cor-theme-darklight);
+}
+
+.theme-box:hover .theme-icon {
+  transform: rotate(-45deg) scale(1.1);
+  filter: drop-shadow(0 0 6px var(--cor-theme-box-shadow));
+}
+
+.theme-text {
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
 @media (max-width: 900px) {

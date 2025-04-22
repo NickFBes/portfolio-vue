@@ -10,6 +10,17 @@
 
   </head>
 
+  <script>
+    (function() {
+      const temaSalvo = localStorage.getItem('theme')
+      if (!temaSalvo || temaSalvo === 'dark') {
+        document.documentElement.classList.add('dark')
+      } else {
+        document.documentElement.classList.add('light')
+      }
+    })()
+  </script>
+
   <body>
     <div id="app"></div>
     <script type="module" src="/src/main.js"></script>

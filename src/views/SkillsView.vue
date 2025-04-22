@@ -124,7 +124,7 @@ const toggleCard = (index) => {
 
 .informacoes {
   background: var(--cor-fundo-infoskill);
-  border: 1px solid rgba(1, 183, 255, 0.15);
+  border: 1px solid rgb(1, 183, 255);
   border-radius: 20px;
   padding: 25px 18px;
   text-align: center;

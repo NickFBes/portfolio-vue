@@ -16,6 +16,11 @@
   --cor-navlisthover: whitesmoke;
   --cor-theme-darklight: rgba(255, 255, 0, 0.959);
 
+  --cor-theme-box-bg: #1e1e1e;
+  --cor-theme-box-text: whitesmoke;
+  --cor-theme-box-shadow: #01b7ff;
+  --cor-theme-box-border: #4863fc;
+
   /* Fontes */
   --fonte-primaria: 'Orbitron', sans-serif;
   --fonte-secundaria: 'Rajdhani', sans-serif;
@@ -42,7 +47,7 @@
   --cor-fundo-header: linear-gradient(0deg, #d6e4ff 0%, #ffffff 100%);
   --cor-fundo-footer: linear-gradient(180deg, #d6e4ff 0%, #ffffff 100%);
   --cor-footer-shadow: rgba(0, 122, 204, 0.2);
-  --cor-theme-darklight: blue;
+  --cor-theme-darklight: yellow;
 
   /* Códigos e elementos especiais */
   --cor-codelines-home: #1c1c1c;
@@ -52,4 +57,9 @@
   --cor-hover-texto: var(--cor-secundaria);
   --cor-hover-glow: rgba(0, 122, 204, 0.6);
   --cor-navlisthover: black;
+
+  --cor-theme-box-bg: black;
+  --cor-theme-box-text: whitesmoke;
+  --cor-theme-box-shadow: #ccc;
+  --cor-theme-box-border: #ccc;
 }
