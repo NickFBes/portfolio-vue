@@ -8,9 +8,20 @@
     <!-- Devicon via CDN -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
 
-    <script type="module" crossorigin src="/portfolio-vue/assets/index-BqK0Qz0W.js"></script>
-    <link rel="stylesheet" crossorigin href="/portfolio-vue/assets/index-VZrTOX-X.css">
+    <script type="module" crossorigin src="/portfolio-vue/assets/index-DIYZP_P9.js"></script>
+    <link rel="stylesheet" crossorigin href="/portfolio-vue/assets/index-BVFyVqZZ.css">
   </head>
+
+  <script>
+    (function() {
+      const temaSalvo = localStorage.getItem('theme')
+      if (!temaSalvo || temaSalvo === 'dark') {
+        document.documentElement.classList.add('dark')
+      } else {
+        document.documentElement.classList.add('light')
+      }
+    })()
+  </script>
 
   <body>
     <div id="app"></div>
