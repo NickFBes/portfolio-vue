@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" class="dark">
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/public/images/logo.png" />
@@ -10,16 +10,6 @@
 
   </head>
 
-  <script>
-    (function() {
-      const temaSalvo = localStorage.getItem('theme')
-      if (!temaSalvo || temaSalvo === 'dark') {
-        document.documentElement.classList.add('dark')
-      } else {
-        document.documentElement.classList.add('light')
-      }
-    })()
-  </script>
 
   <body>
     <div id="app"></div>

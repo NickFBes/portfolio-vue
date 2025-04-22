@@ -36,30 +36,40 @@
 /* 🌞 Tema Claro */
 :root.light {
   /* Cores principais */
-  --cor-primaria: #1d1d1d; /* Texto principal */
-  --cor-secundaria: #007acc; /* Azul moderno, elegante e visível */
-  --cor-branca: #121212; /* Texto escuro, mas não 100% preto para suavizar */
-  
+  --cor-primaria: #4863fc; /* Preto profundo para texto */
+  --cor-secundaria: #007acc; /* Azul moderno e high-tech */
+  --cor-branca: #000000;
+
   /* Fundos */
-  --cor-fundo-escuro: #f2f4f8; /* Fundo geral claro */
-  --cor-fundo-cinza-escuro: #d9dee3;
-  --cor-fundo-cinza-claro: #e6ebf0;
-  --cor-fundo-header: linear-gradient(0deg, #d6e4ff 0%, #ffffff 100%);
-  --cor-fundo-footer: linear-gradient(180deg, #d6e4ff 0%, #ffffff 100%);
-  --cor-footer-shadow: rgba(0, 122, 204, 0.2);
-  --cor-theme-darklight: yellow;
+  --cor-fundo-escuro: #f9fbfd; /* Levemente off-white para conforto visual */
+  --cor-fundo-cinza-escuro: #dce3ea;
+  --cor-fundo-cinza-claro: #e9eff5;
+  --cor-fundo-header: linear-gradient(
+  145deg,
+  rgba(255, 255, 255, 0.85) 0%,
+  rgba(226, 237, 255, 0.9) 50%,
+  rgba(255, 255, 255, 0.85) 100%
+);
+--cor-fundo-footer: linear-gradient(
+  145deg,
+  rgba(255, 255, 255, 0.85) 0%,
+  rgba(226, 237, 255, 0.9) 50%,
+  rgba(255, 255, 255, 0.85) 100%
+);
+  --cor-footer-shadow: rgba(0, 122, 204, 0.15);
+  --cor-theme-darklight: #e5ff00;
 
-  /* Códigos e elementos especiais */
-  --cor-codelines-home: #1c1c1c;
-  --cor-fundo-infoskills: linear-gradient(145deg, rgba(200, 200, 200, 0.6), rgba(255, 255, 255, 0.4));
-
-  /* Hover e efeitos */
+  /* Efeitos visuais e hover */
   --cor-hover-texto: var(--cor-secundaria);
-  --cor-hover-glow: rgba(0, 122, 204, 0.6);
-  --cor-navlisthover: black;
+  --cor-hover-glow: rgba(0, 122, 204, 0.4);
+  --cor-navlisthover: #1a1a1a;
+
+  /* Código e blocos especiais */
+  --cor-codelines-home: #222; /* Linhas de código visíveis */
+  --cor-fundo-infoskills: linear-gradient(145deg, rgba(230, 240, 255, 0.6), rgba(255, 255, 255, 0.4));
 
   --cor-theme-box-bg: black;
   --cor-theme-box-text: whitesmoke;
-  --cor-theme-box-shadow: yellow;
+  --cor-theme-box-shadow: #4863fc;
   --cor-theme-box-border: #ccc;
 }
