@@ -3,7 +3,18 @@ import { ref, onMounted, onBeforeUnmount } from 'vue'
 
 const menuAberto = ref(false)
 const larguraTela = ref(window.innerWidth)
-const isDark = ref(localStorage.getItem('theme') === 'dark')
+
+const obterTemaInicial = () => {
+  const temaSalvo = localStorage.getItem('theme')
+  if (temaSalvo) {
+    return temaSalvo === 'dark'
+  } else {
+    localStorage.setItem('theme', 'dark')
+    return true
+  }
+}
+
+const isDark = ref(obterTemaInicial())
 const iconeTema = ref(isDark.value ? 'fa-sun' : 'fa-moon')
 
 const atualizarLargura = () => {
@@ -16,18 +27,21 @@ const fecharMenu = () => {
   }
 }
 
+const aplicarTema = () => {
+  document.documentElement.className = isDark.value ? 'dark' : 'light'
+  iconeTema.value = isDark.value ? 'fa-sun' : 'fa-moon'
+}
+
 const toggleTheme = () => {
   isDark.value = !isDark.value
   const novoTema = isDark.value ? 'dark' : 'light'
-  document.documentElement.className = novoTema
   localStorage.setItem('theme', novoTema)
-  iconeTema.value = isDark.value ? 'fa-sun' : 'fa-moon'
+  aplicarTema()
 }
 
 onMounted(() => {
   window.addEventListener('resize', atualizarLargura)
-  document.documentElement.className = isDark.value ? 'dark' : 'light'
-  iconeTema.value = isDark.value ? 'fa-sun' : 'fa-moon'
+  aplicarTema()
 })
 
 onBeforeUnmount(() => {
@@ -43,9 +57,7 @@ onBeforeUnmount(() => {
           <img src="/images/logo.png" alt="Logo NB" class="logo-img" />
         </router-link>
 
-        <div class="menu" @click="menuAberto = !menuAberto">
-          <span class="hamburguer" :class="{ ativo: menuAberto }"></span>
-        </div>
+        
 
         <nav :class="{ aberto: menuAberto }">
           <ul>
@@ -54,13 +66,18 @@ onBeforeUnmount(() => {
             <li><router-link to="/habilidades" @click="fecharMenu">Compétences</router-link></li>
             <li><router-link to="/projetos" @click="fecharMenu">Mes projets</router-link></li>
             <li><router-link to="/contact" @click="fecharMenu">Contact</router-link></li>
-            <li>
-              <button class="theme-toggle" @click="toggleTheme">
-                <font-awesome-icon :icon="iconeTema" />
-              </button>
-            </li>
           </ul>
         </nav>
+
+        <div class="actions">
+          <button class="theme-toggle" @click="toggleTheme">
+            <font-awesome-icon :icon="iconeTema" />
+          </button>
+
+          <div class="menu" @click="menuAberto = !menuAberto">
+            <span class="hamburguer" :class="{ ativo: menuAberto }"></span>
+          </div>
+        </div>
       </div>
     </div>
   </header>
@@ -75,6 +92,7 @@ onBeforeUnmount(() => {
   box-shadow: 0 0 20px var(--cor-secundaria);
   border-radius: 0 0 5% 5%;
   z-index: 2;
+  position: relative;
 }
 
 .logo-img {
@@ -89,44 +107,10 @@ onBeforeUnmount(() => {
   filter: drop-shadow(0 0 10px var(--cor-hover-glow));
 }
 
-nav ul {
+.actions {
   display: flex;
   align-items: center;
-  gap: 20px;
-}
-
-nav li a {
-  font-family: var(--fonte-primaria);
-  text-transform: uppercase;
-  color: var(--cor-branca);
-  font-size: var(--fonte-normal);
-  font-weight: 600;
-  padding: 8px 16px;
-  border-radius: 10px;
-  letter-spacing: 1.5px;
-  text-shadow: 0 0 2px var(--cor-primaria);
-  transition: 0.2s ease;
-}
-
-nav li a:hover {
-  color: var(--cor-navlisthover);
-  transform: scale(1.08);
-  text-shadow: 0 0 3px #00bfff, 0 0 3px #00bfff;
-  transition: all 0.5s ease;
-}
-
-.theme-toggle {
-  background: transparent;
-  border: none;
-  font-size: 2.6rem;
-  color: var(--cor-theme-darklight);
-  cursor: pointer;
-  transition: transform 0.3s ease, color 0.3s ease;
-}
-
-.theme-toggle:hover {
-  transform: rotate(-45deg) scale(1.1);
-  filter: drop-shadow(0 0 10px var(--cor-theme-darklight));
+  gap: 1rem;
 }
 
 .menu {
@@ -179,6 +163,46 @@ nav li a:hover {
   bottom: 0;
 }
 
+nav ul {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+nav li a {
+  font-family: var(--fonte-primaria);
+  text-transform: uppercase;
+  color: var(--cor-branca);
+  font-size: var(--fonte-normal);
+  font-weight: 600;
+  padding: 8px 16px;
+  border-radius: 10px;
+  letter-spacing: 1.5px;
+  text-shadow: 0 0 2px var(--cor-primaria);
+  transition: 0.2s ease;
+}
+
+nav li a:hover {
+  color: var(--cor-navlisthover);
+  transform: scale(1.08);
+  text-shadow: 0 0 3px #00bfff, 0 0 3px #00bfff;
+  transition: all 0.5s ease;
+}
+
+.theme-toggle {
+  background: transparent;
+  border: none;
+  font-size: 2.6rem;
+  color: var(--cor-theme-darklight);
+  cursor: pointer;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.theme-toggle:hover {
+  transform: rotate(-45deg) scale(1.1);
+  filter: drop-shadow(0 0 10px var(--cor-theme-darklight));
+}
+
 @media (max-width: 900px) {
   .menu {
     display: flex;
@@ -197,6 +221,7 @@ nav li a:hover {
     width: 240px;
     padding: 2rem;
     display: none;
+    z-index: 1000;
   }
 
   nav.aberto {
@@ -214,24 +239,30 @@ nav li a:hover {
   }
 
   nav li a {
-  font-family: var(--fonte-primaria);
-  text-transform: uppercase;
-  color: var(--cor-branca);
-  font-size: var(--fonte-normal);
-  font-weight: 600;
-  padding: 8px 16px;
-  border-radius: 10px;
-  letter-spacing: 1.5px;
-  text-shadow: 0 0 5px var(--cor-primaria);
-  transition: all 0.3s ease;
-}
+    font-family: var(--fonte-primaria);
+    text-transform: uppercase;
+    
+    font-size: var(--fonte-normal);
+    font-weight: 600;
+    padding: 8px 16px;
+    border-radius: 10px;
+    letter-spacing: 1.5px;
+    text-shadow: 0 0 5px var(--cor-primaria);
+    transition: all 0.3s ease;
+  }
 
-nav li a:hover {
-  color: var(--cor-hover-texto);
-  transform: scale(1.08);
-  text-shadow: 0 0 5px var(--cor-hover-glow), 0 0 5px var(--cor-hover-glow);
-}
+  nav li a:hover {
+    
+    transform: scale(1.08);
+    text-shadow: 0 0 5px var(--cor-hover-glow), 0 0 5px var(--cor-hover-glow);
+  }
 
-}
+  .actions {
+    gap: 0.5rem;
+  }
 
+  .theme-toggle {
+    order: 1;
+  }
+}
 </style>
