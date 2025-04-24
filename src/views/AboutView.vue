@@ -83,14 +83,13 @@ const linhasTexto = [
 }
 
 .section-title h2 {
+  font-size: var(--fonte-gigante);
+  font-family: var(--fonte-primaria);
   color: var(--cor-primaria);
+  margin-bottom: 60px;
+  letter-spacing: 1.5px;
 }
 
-.section-title h2 {
-  font-size: var(--fonte-gigante);
-  color: var(--cor-primaria);
-  font-family: var(--fonte-primaria);
-}
 
 .conteudo {
   display: flex;

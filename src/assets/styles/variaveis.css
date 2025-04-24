@@ -6,7 +6,7 @@
   --cor-fundo-escuro: #040203;
   --cor-fundo-cinza-escuro: #282828;
   --cor-fundo-cinza-claro: #353535;
-  --cor-fundo-header: linear-gradient(0deg, #0b0f2b 0%, #111827 100%);
+  --cor-fundo-header: linear-gradient(100deg, #0b0f2b 0%, #111827 100%);
   --cor-fundo-footer: linear-gradient(180deg, #0b0f2b 0%, #111827 100%);
   --cor-codelines-home: #00fff7;
   --cor-fundo-infoskills: linear-gradient(145deg, rgba(30,30,30,0.7), rgba(0, 0, 0, 0.5));
@@ -36,40 +36,48 @@
 /* 🌞 Tema Claro */
 :root.light {
   /* Cores principais */
-  --cor-primaria: #4863fc; /* Preto profundo para texto */
-  --cor-secundaria: #007acc; /* Azul moderno e high-tech */
-  --cor-branca: #000000;
+  --cor-primaria: #4863fc;
+  --cor-secundaria: #007acc;
+  --cor-branca: #1e1e1e; /* Texto escuro, mas suave no tema claro */
 
   /* Fundos */
-  --cor-fundo-escuro: #f9fbfd; /* Levemente off-white para conforto visual */
-  --cor-fundo-cinza-escuro: #dce3ea;
-  --cor-fundo-cinza-claro: #e9eff5;
+  --cor-fundo-escuro: #f5f7fa;
+  --cor-fundo-cinza-escuro: #e0e6ed;
+  --cor-fundo-cinza-claro: #f1f5fa;
+
   --cor-fundo-header: linear-gradient(
-  145deg,
-  rgba(255, 255, 255, 0.85) 0%,
-  rgba(226, 237, 255, 0.9) 50%,
-  rgba(255, 255, 255, 0.85) 100%
-);
---cor-fundo-footer: linear-gradient(
-  145deg,
-  rgba(255, 255, 255, 0.85) 0%,
-  rgba(226, 237, 255, 0.9) 50%,
-  rgba(255, 255, 255, 0.85) 100%
-);
-  --cor-footer-shadow: rgba(0, 122, 204, 0.15);
+    245deg,
+    rgba(255, 255, 255, 0.95) 0%,
+    rgba(226, 234, 255, 0.9) 50%,
+    rgba(240, 243, 255, 0.95) 100%
+  );
+
+  --cor-fundo-footer: linear-gradient(
+    145deg,
+    rgba(255, 255, 255, 0.95) 0%,
+    rgba(226, 237, 255, 0.9) 50%,
+    rgba(240, 243, 255, 0.95) 100%
+  );
+
+  --cor-footer-shadow: rgba(0, 122, 204, 0.1);
   --cor-theme-darklight: #e5ff00;
 
   /* Efeitos visuais e hover */
   --cor-hover-texto: var(--cor-secundaria);
-  --cor-hover-glow: rgba(0, 122, 204, 0.4);
-  --cor-navlisthover: #1a1a1a;
+  --cor-hover-glow: rgba(0, 122, 204, 0.3);
+  --cor-navlisthover: #111111;
 
   /* Código e blocos especiais */
-  --cor-codelines-home: #222; /* Linhas de código visíveis */
-  --cor-fundo-infoskills: linear-gradient(145deg, rgba(230, 240, 255, 0.6), rgba(255, 255, 255, 0.4));
+  --cor-codelines-home: #333;
+  --cor-fundo-infoskills: linear-gradient(
+    145deg,
+    rgba(230, 240, 255, 0.6),
+    rgba(255, 255, 255, 0.4)
+  );
 
-  --cor-theme-box-bg: black;
-  --cor-theme-box-text: whitesmoke;
-  --cor-theme-box-shadow: #4863fc;
-  --cor-theme-box-border: #ccc;
+  /* Box de troca de tema */
+  --cor-theme-box-bg: #ffffff;
+  --cor-theme-box-text: #1a1a1a;
+  --cor-theme-box-shadow: #fcff30;
+  --cor-theme-box-border: #d0d0d0;
 }
