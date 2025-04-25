@@ -60,8 +60,6 @@ onBeforeUnmount(() => {
           <img src="/images/logo.png" alt="Logo NB" class="logo-img" />
         </router-link>
 
-        
-
         <nav :class="{ aberto: menuAberto }">
           <ul>
             <li><router-link to="/" @click="fecharMenu">Home</router-link></li>
@@ -74,9 +72,9 @@ onBeforeUnmount(() => {
 
         <div class="actions">
           <div class="theme-box" @click="toggleTheme">
-  <font-awesome-icon :icon="iconeTema" class="theme-icon" />
-  <span class="theme-text">{{ textoTema }}</span>
-</div>
+            <font-awesome-icon :icon="iconeTema" class="theme-icon" />
+            <span class="theme-text">{{ textoTema }}</span>
+          </div>
 
           <div class="menu" @click="menuAberto = !menuAberto">
             <span class="hamburguer" :class="{ ativo: menuAberto }"></span>
@@ -170,20 +168,28 @@ onBeforeUnmount(() => {
 nav ul {
   display: flex;
   align-items: center;
-  gap: 20px;
+  flex-wrap: nowrap;
+  gap: clamp(10px, 2vw, 24px);
+  padding-left: 0;
+  margin: 0;
+}
+
+nav li {
+  list-style: none;
 }
 
 nav li a {
   font-family: var(--fonte-primaria);
   text-transform: uppercase;
   color: var(--cor-branca);
-  font-size: var(--fonte-normal);
+  font-size: clamp(0.7rem, 1.1vw, 1.3rem);
   font-weight: 600;
-  padding: 8px 16px;
+  padding: 6px 12px;
   border-radius: 10px;
   letter-spacing: 1.5px;
   text-shadow: 0 0 2px var(--cor-primaria);
   transition: 0.2s ease;
+  white-space: nowrap;
 }
 
 nav li a:hover {
@@ -191,20 +197,6 @@ nav li a:hover {
   transform: scale(1.08);
   text-shadow: 0 0 3px #00bfff, 0 0 3px #00bfff;
   transition: all 0.5s ease;
-}
-
-.theme-toggle {
-  background: transparent;
-  border: none;
-  font-size: 2.6rem;
-  color: var(--cor-theme-darklight);
-  cursor: pointer;
-  transition: transform 0.3s ease, color 0.3s ease;
-}
-
-.theme-toggle:hover {
-  transform: rotate(-45deg) scale(1.1);
-  filter: drop-shadow(0 0 10px var(--cor-theme-darklight));
 }
 
 .theme-box {
@@ -239,6 +231,7 @@ nav li a:hover {
   letter-spacing: 1px;
 }
 
+/* RESPONSIVO */
 @media (max-width: 900px) {
   .menu {
     display: flex;
@@ -275,30 +268,14 @@ nav li a:hover {
   }
 
   nav li a {
-    font-family: var(--fonte-primaria);
-    text-transform: uppercase;
-    
-    font-size: var(--fonte-normal);
-    font-weight: 600;
-    padding: 8px 16px;
-    border-radius: 10px;
-    letter-spacing: 1.5px;
-    text-shadow: 0 0 5px var(--cor-primaria);
-    transition: all 0.3s ease;
-  }
-
-  nav li a:hover {
-    
-    transform: scale(1.08);
-    text-shadow: 0 0 5px var(--cor-hover-glow), 0 0 5px var(--cor-hover-glow);
+    font-size: 1rem;
+    width: 100%;
+    display: block;
+    padding: 10px 12px;
   }
 
   .actions {
     gap: 0.5rem;
-  }
-
-  .theme-toggle {
-    order: 1;
   }
 }
 </style>
