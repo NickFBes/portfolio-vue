@@ -79,7 +79,7 @@ const linhasTexto = [
 .section {
   padding: 5rem 2rem;
   color: var(--cor-primaria);
-  min-height: calc(100vh - 200px);
+  min-height: calc(100vh - 156.8px);
 }
 
 .section-title h2 {

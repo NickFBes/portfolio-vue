@@ -88,9 +88,7 @@ onBeforeUnmount(() => {
 .header {
   padding: 20px 30px;
   background: var(--cor-fundo-header);
-  backdrop-filter: blur(8px);
   border-bottom: 1px solid var(--cor-primaria);
-  box-shadow: 0 0 20px var(--cor-secundaria);
   border-radius: 0 0 5% 5%;
   z-index: 2;
   position: relative;
@@ -184,9 +182,7 @@ nav li a {
   font-size: 1.5rem;
   font-weight: 600;
   padding: 6px 12px;
-  border-radius: 10px;
   letter-spacing: 1.5px;
-  text-shadow: 0 0 2px var(--cor-primaria);
   transition: 0.2s ease;
   white-space: nowrap;
 }
@@ -194,7 +190,7 @@ nav li a {
 nav li a:hover {
   color: var(--cor-navlisthover);
   transform: scale(1.08);
-  text-shadow: 0 0 3px #00bfff, 0 0 3px #00bfff;
+  text-shadow: 0 0 2px #00bfff, 0 0 2px #00bfff;
   transition: all 0.5s ease;
 }
 
@@ -221,7 +217,7 @@ nav li a:hover {
 }
 
 .theme-box:hover .theme-icon {
-  transform: rotate(-65deg) scale(1.1);
+  transform: rotate(-150deg) scale(1.1);
  
 }
 

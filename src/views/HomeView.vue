@@ -81,11 +81,11 @@ function randomStyle() {
         <!-- Texto: Saudação, Nome, Título -->
         <div
           v-motion
-          :initial="{ opacity: 0, x: -1550 }"
+          :initial="{ opacity: 0, x: -450 }"
           :enter="{
             opacity: 1,
             x: 0,
-            transition: { duration: 1100, easing: 'ease-out' },
+            transition: { duration: 1100, delay: 500, easing: 'ease-out' },
           }"
           class="texto-home"
         >
@@ -100,7 +100,7 @@ function randomStyle() {
             :enter="{
               opacity: 1,
               y: 0,
-              transition: { duration: 900, delay: 500, easing: 'ease-out' },
+              transition: { duration: 900, delay: 1200, easing: 'ease-out' },
             }"
             class="redes-sociais"
           >
@@ -114,7 +114,7 @@ function randomStyle() {
         <!-- Imagem com animação após redes sociais -->
         <div
           v-motion
-          :initial="{ opacity: 0, x: 550 }"
+          :initial="{ opacity: 0, x: 350 }"
           :enter="{
             opacity: 1,
 
@@ -146,7 +146,7 @@ function randomStyle() {
 
 <style scoped>
 .home {
-  min-height: calc(100vh - 200px);
+  min-height: calc(100vh - 156.8px);
   background-color: var(--cor-fundo-escuro);
   color: var(--cor-branca);
   display: flex;
@@ -176,7 +176,6 @@ function randomStyle() {
   padding-inline: 30px;
   padding-block: 20px;
   max-width: 520px;
-
   z-index: 2;
   text-align: left;
 }
@@ -189,7 +188,6 @@ function randomStyle() {
 
 .img-home .img-box {
   max-width: 380px;
-
   padding: 10px;
 }
 
@@ -235,8 +233,8 @@ function randomStyle() {
 
 .redes-sociais a {
   font-size: 2.4rem;
-  color: var(--cor-primaria);
-  transition: filter 0.3s ease;
+  color: var(--cor-branca);
+  transition: filter 0.3s ease-in-out;
 }
 
 .redes-sociais a:hover {
@@ -245,7 +243,7 @@ function randomStyle() {
 
 .redes-sociais a:hover svg {
   color: whitesmoke;
-  filter: drop-shadow(0 0 10px #00bfff);
+  filter: brightness(1.5) drop-shadow(0 0 2px var(--cor-primaria));
   transition: all 0.4s ease;
 }
 

@@ -89,7 +89,7 @@ import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
   background-color: var(--cor-fundo-escuro);
   color: var(--cor-branca);
   padding: 60px 20px;
-  min-height: calc(100vh - 200px);
+  min-height: calc(100vh - 156.8px);
   overflow: hidden;
 }
 

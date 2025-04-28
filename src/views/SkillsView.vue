@@ -100,7 +100,7 @@ const toggleCard = (index) => {
   background-color: var(--cor-fundo-escuro);
   padding: 5rem 2rem;
   color: var(--cor-branca);
-  min-height: calc(100vh - 200px);
+  min-height: calc(100vh - 156.8px);
 }
 
 .section-title h2 {
