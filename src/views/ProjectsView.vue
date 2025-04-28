@@ -22,14 +22,14 @@ const projetos = ref([
     id: 3,
     titulo: 'Projet 3',
     imagem: `${import.meta.env.BASE_URL}images/projet3.png`,
-    descricao: "Projet de portfolio professionnel.",
+    descricao: "Ce projet est une application web qui utilise la WeatherAPI pour afficher la météo actuelle dans n importe quelle ville. Développé avec HTML, CSS et JavaScript, le site permet aux utilisateurs de consulter des informations telles que la température et les conditions climatiques en temps réel. Il suffit d entrer le nom de la ville souhaitée pour obtenir des données mises à jour de manière simple et intuitive.",
     link: 'https://github.com/seuusuario/projet3'
   },
   {
     id: 4,
     titulo: 'WeatherAPI',
     imagem: `${import.meta.env.BASE_URL}images/projet4.png`,
-    descricao: 'Ce projet est une application web qui utilise la WeatherAPI pour afficher la météo actuelle dans n importe quelle ville. Développé avec HTML, CSS et JavaScript, le site permet aux utilisateurs de consulter des informations telles que la température et les conditions climatiques en temps réel. Il suffit d entrer le nom de la ville souhaitée pour obtenir des données mises à jour de manière simple et intuitive.',
+    descricao: "Ce projet est une application web qui utilise la WeatherAPI pour afficher la météo actuelle dans n importe quelle ville. Développé avec HTML, CSS et JavaScript, le site permet aux utilisateurs de consulter des informations telles que la température et les conditions climatiques en temps réel. Il suffit d entrer le nom de la ville souhaitée pour obtenir des données mises à jour de manière simple et intuitive.",
     link: 'https://nickfbes.github.io/app-previsao-do-tempo-main2/'
   }
 ])
@@ -109,7 +109,7 @@ onMounted(() => {
 
 .swiper.slider-wrapper {
   width: 100%;
-  max-width: 1140px;
+  max-width: 90%;
   margin: 0 auto;
   height: 70vh;
   display: flex;

@@ -1,5 +1,5 @@
 <script setup>
-import { ref, computed, onMounted, onBeforeUnmount } from 'vue'
+import { ref, onMounted, onBeforeUnmount } from 'vue'
 
 const menuAberto = ref(false)
 const larguraTela = ref(window.innerWidth)
@@ -15,9 +15,7 @@ const obterTemaInicial = () => {
 }
 
 const isDark = ref(obterTemaInicial())
-const iconeTema = ref(isDark.value ? 'fa-sun' : 'fa-moon')
-
-const textoTema = computed(() => (isDark.value ? 'Mode sombre' : 'Mode clair'))
+const iconeTema = ref(isDark.value ? 'fa-sun' : 'fa-moon') // <-- SOL no tema escuro
 
 const atualizarLargura = () => {
   larguraTela.value = window.innerWidth
@@ -31,7 +29,7 @@ const fecharMenu = () => {
 
 const aplicarTema = () => {
   document.documentElement.className = isDark.value ? 'dark' : 'light'
-  iconeTema.value = isDark.value ? 'fa-moon' : 'fa-sun'
+  iconeTema.value = isDark.value ? 'fa-sun' : 'fa-moon' // <-- SOL se escuro, LUA se claro
 }
 
 const toggleTheme = () => {
@@ -50,6 +48,7 @@ onBeforeUnmount(() => {
   window.removeEventListener('resize', atualizarLargura)
 })
 </script>
+
 
 
 <template>
@@ -73,7 +72,7 @@ onBeforeUnmount(() => {
         <div class="actions">
           <div class="theme-box" @click="toggleTheme">
             <font-awesome-icon :icon="iconeTema" class="theme-icon" />
-            <span class="theme-text">{{ textoTema }}</span>
+            
           </div>
 
           <div class="menu" @click="menuAberto = !menuAberto">
@@ -182,7 +181,7 @@ nav li a {
   font-family: var(--fonte-primaria);
   text-transform: uppercase;
   color: var(--cor-branca);
-  font-size: clamp(0.7rem, 1.1vw, 1.3rem);
+  font-size: 1.5rem;
   font-weight: 600;
   padding: 6px 12px;
   border-radius: 10px;
@@ -222,14 +221,10 @@ nav li a:hover {
 }
 
 .theme-box:hover .theme-icon {
-  transform: rotate(-45deg) scale(1.1);
-  filter: drop-shadow(0 0 6px var(--cor-theme-box-shadow));
+  transform: rotate(-65deg) scale(1.1);
+ 
 }
 
-.theme-text {
-  text-transform: uppercase;
-  letter-spacing: 1px;
-}
 
 /* RESPONSIVO */
 @media (max-width: 900px) {

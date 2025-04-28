@@ -14,15 +14,15 @@
   --cor-hover-glow: #00bfff;
   --cor-footer-shadow: rgba(0, 183, 255, 0.2);
   --cor-navlisthover: whitesmoke;
-  --cor-theme-darklight: rgb(184, 184, 255);
+  --cor-theme-darklight: rgb(246, 250, 23);
 
   --cor-theme-box-bg: #1e1e1e;
   --cor-theme-box-text: whitesmoke;
-  --cor-theme-box-shadow: #01b7ff;
-  --cor-theme-box-border: #4863fc;
+
+  --cor-theme-box-border: rgb(246, 250, 23);
 
   /* Fontes */
-  --fonte-primaria: 'Orbitron', sans-serif;
+  --fonte-primaria: 'Exo 2', sans-serif;
   --fonte-secundaria: 'Rajdhani', sans-serif;
   --fonte-gigante: 4.5rem;
   --fonte-extra-grande: 3rem;
@@ -61,7 +61,7 @@
   );
 
   --cor-footer-shadow: rgba(0, 122, 204, 0.1);
-  --cor-theme-darklight: #e5ff00;
+  --cor-theme-darklight: #0026ff;
 
   /* Efeitos visuais e hover */
   --cor-hover-texto: var(--cor-secundaria);
@@ -79,6 +79,6 @@
   /* Box de troca de tema */
   --cor-theme-box-bg: #ffffff;
   --cor-theme-box-text: #1a1a1a;
-  --cor-theme-box-shadow: #fcff30;
-  --cor-theme-box-border: #d0d0d0;
+ 
+  --cor-theme-box-border: #0026ff;
 }
