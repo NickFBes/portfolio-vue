@@ -13,7 +13,7 @@
 <style scoped>
 .footer {
   background: var(--cor-fundo-footer);
-  border-top: 1px solid var(--cor-primaria);
+  border-top: 2px solid var(--cor-primaria);
   padding: 2rem;
   text-align: center;
   font-family: var(--fonte-secundaria);

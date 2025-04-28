@@ -88,7 +88,7 @@ onBeforeUnmount(() => {
 .header {
   padding: 20px 30px;
   background: var(--cor-fundo-header);
-  border-bottom: 1px solid var(--cor-primaria);
+  border-bottom: 2px solid var(--cor-primaria);
   border-radius: 0 0 5% 5%;
   z-index: 2;
   position: relative;
