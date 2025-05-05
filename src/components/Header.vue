@@ -190,7 +190,7 @@ nav li a {
 nav li a:hover {
   color: var(--cor-navlisthover);
   transform: scale(1.08);
-  text-shadow: 0 0 2px #00bfff, 0 0 2px #00bfff;
+  
   transition: all 0.5s ease;
 }
 
