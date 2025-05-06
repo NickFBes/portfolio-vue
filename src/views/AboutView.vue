@@ -54,7 +54,7 @@ const linhasTexto = [
             }"
           >
             <a
-              href="/files/NicolasBesCvDWWM.pdf"
+              href="/NicolasBesCvDWWM.pdf"
               target="_blank"
               class="botao-cv"
               rel="noopener"
