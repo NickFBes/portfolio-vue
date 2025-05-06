@@ -25,7 +25,7 @@
 .footer-bottom {
   font-size: 1.2rem;
   font-weight: bold;
-  opacity: 0.6;
+  opacity: 0.7;
 }
 
 </style>

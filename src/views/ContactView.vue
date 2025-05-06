@@ -1,6 +1,38 @@
 <script setup>
 import { ref } from "vue";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
+import emailjs from "emailjs-com";
+
+const nome = ref("");
+const email = ref("");
+const mensagem = ref("");
+const status = ref("");
+
+const enviarEmail = () => {
+  const templateParams = {
+    from_name: nome.value,
+    from_email: email.value,
+    message: mensagem.value,
+    time: new Date().toLocaleString('fr-FR'),
+  };
+
+  emailjs
+    .send(
+      "service_f36l95p",       // <- substitua pelo seu Service ID
+      "template_68j6bif",      // <- substitua pelo seu Template ID
+      templateParams,
+      "rsQYNtDgOsypBOrSr"      // <- substitua pelo seu User ID (Public Key)
+    )
+    .then(() => {
+      status.value = "Envoyée!";
+      nome.value = "";
+      email.value = "";
+      mensagem.value = "";
+    })
+    .catch((error) => {
+      status.value = "Error: " + error.text;
+    });
+};
 </script>
 
 <template>
@@ -19,12 +51,13 @@ import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
           class="form-contact"
         >
           <h1>Entrer en contact</h1>
-          <p>Remplis le formulaire ci-dessous ou connecte-toi sur les réseaux.</p>
-          <form class="form">
-            <input type="text" placeholder="Votre nom" required />
-            <input type="email" placeholder="Votre e-mail" required />
-            <textarea placeholder="Votre message" rows="5" required></textarea>
+          <p>Remplis le formulaire ci-dessous.</p>
+          <form class="form" @submit.prevent="enviarEmail">
+            <input type="text" placeholder="Votre nom" required v-model="nome" />
+            <input type="email" placeholder="Votre e-mail" required v-model="email" />
+            <textarea placeholder="Votre message" rows="5" required v-model="mensagem"></textarea>
             <button type="submit">Envoyer</button>
+            <p>{{ status }}</p>
           </form>
         </div>
 
@@ -42,9 +75,9 @@ import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
           <h2>Mes réseaux</h2>
           <ul class="contact-links">
             <li>
-              <a href="mailto:exemple@email.com" target="_blank">
+              <a target="_blank">
                 <font-awesome-icon icon="fa-solid fa-envelope" />
-                exemple@email.com
+                nickfbes@proton.me
               </a>
             </li>
             <li>
@@ -66,7 +99,7 @@ import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
               </a>
             </li>
             <li>
-              <a href="https://github.com/exemple" target="_blank">
+              <a href="https://github.com/NickFBes" target="_blank">
                 <font-awesome-icon icon="fa-brands fa-github" />
                 GitHub
               </a>
@@ -84,12 +117,13 @@ import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
   </section>
 </template>
 
+
 <style scoped>
 .contact {
   background-color: var(--cor-fundo-escuro);
   color: var(--cor-branca);
   padding: 60px 20px;
-  min-height: calc(100vh - 156.8px);
+  min-height: calc(100vh - 158.4px);
   overflow: hidden;
 }
 
@@ -192,6 +226,8 @@ import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
   color: var(--cor-branca);
   text-decoration: none;
   font-size: 1.8rem;
+  font-weight: 600;
+  line-height: 1.8;
   font-family: var(--fonte-secundaria);
   transition: color 0.3s;
 }
@@ -206,7 +242,7 @@ import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 
 .contact-links a:hover svg {
   color: whitesmoke;
-  filter: drop-shadow(0 0 10px #00bfff);
+  filter: brightness(1.5) drop-shadow(0 0 2px var(--cor-primaria));
   transition: all 0.4s ease;
 }
 

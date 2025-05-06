@@ -15,7 +15,7 @@ const obterTemaInicial = () => {
 }
 
 const isDark = ref(obterTemaInicial())
-const iconeTema = ref(isDark.value ? 'fa-sun' : 'fa-moon') // <-- SOL no tema escuro
+const iconeTema = ref(isDark.value ? 'fa-sun' : 'fa-moon') // SOL no tema escuro
 
 const atualizarLargura = () => {
   larguraTela.value = window.innerWidth
@@ -29,7 +29,7 @@ const fecharMenu = () => {
 
 const aplicarTema = () => {
   document.documentElement.className = isDark.value ? 'dark' : 'light'
-  iconeTema.value = isDark.value ? 'fa-sun' : 'fa-moon' // <-- SOL se escuro, LUA se claro
+  iconeTema.value = isDark.value ? 'fa-sun' : 'fa-moon'
 }
 
 const toggleTheme = () => {
@@ -49,14 +49,17 @@ onBeforeUnmount(() => {
 })
 </script>
 
-
-
 <template>
   <header class="header">
     <div class="container">
       <div class="row justify-content-between alinhar-itens-no-centro">
         <router-link to="/" class="logo-link">
-          <img src="/images/logo.png" alt="Logo NB" class="logo-img" />
+          <img
+            src="/images/logo-nb-dark.png"
+            alt="Logo NB"
+            class="logo-img"
+            :class="{ 'invertida': !isDark }"
+          />
         </router-link>
 
         <nav :class="{ aberto: menuAberto }">
@@ -72,7 +75,6 @@ onBeforeUnmount(() => {
         <div class="actions">
           <div class="theme-box" @click="toggleTheme">
             <font-awesome-icon :icon="iconeTema" class="theme-icon" />
-            
           </div>
 
           <div class="menu" @click="menuAberto = !menuAberto">
@@ -83,6 +85,7 @@ onBeforeUnmount(() => {
     </div>
   </header>
 </template>
+
 
 <style scoped>
 .header {
@@ -95,15 +98,18 @@ onBeforeUnmount(() => {
 }
 
 .logo-img {
-  height: 60px;
-  width: auto;
-  filter: drop-shadow(0 0 5px var(--cor-secundaria));
+  height: 95px;
+  width: 120px;
   transition: 0.3s ease;
 }
 
 .logo-link:hover .logo-img {
   transform: scale(1.05);
-  filter: drop-shadow(0 0 10px var(--cor-hover-glow));
+  animation: matrixGlow 1.2s ease-in-out infinite;
+}
+
+.logo-img.invertida {
+  filter: invert() brightness(0);
 }
 
 .actions {
@@ -267,6 +273,18 @@ nav li a:hover {
 
   .actions {
     gap: 0.5rem;
+  }
+}
+
+
+@keyframes matrixGlow {
+  0%, 100% {
+    opacity: 1;
+    filter: drop-shadow(0 0 5px var(#000)) brightness(1);
+  }
+  50% {
+    opacity: 0.6;
+    filter: drop-shadow(0 0 20px var(#000)) brightness(1.3);
   }
 }
 </style>

@@ -146,7 +146,7 @@ function randomStyle() {
 
 <style scoped>
 .home {
-  min-height: calc(100vh - 156.8px);
+  min-height: calc(100vh - 158.4px);
   background-color: var(--cor-fundo-escuro);
   color: var(--cor-branca);
   display: flex;

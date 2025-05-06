@@ -92,7 +92,7 @@ onMounted(() => {
 
 <style scoped>
 .projetos.section {
-  min-height: calc(100vh - 200px);
+  min-height: calc(100vh - 158.4px);
   padding: 5rem 2rem;
   display: flex;
   flex-direction: column;
@@ -163,7 +163,7 @@ onMounted(() => {
 .projeto h3 {
   font-size: 2.1rem;
   font-weight: 700;
-  color: var(--cor-branca);
+  color: var(--cor-primaria);
   padding: 1rem;
   text-align: center;
   background-color: var(--cor-fundo-escuro);
@@ -182,7 +182,9 @@ onMounted(() => {
 
 .informacoes-projeto p {
   color: var(--cor-branca);
-  font-size: 1.6rem;
+  font-size: 1.8rem;
+  font-weight: 600;
+  line-height: 1.8;
   margin: 0;
 }
 

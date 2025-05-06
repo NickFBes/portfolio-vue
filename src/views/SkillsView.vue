@@ -100,7 +100,7 @@ const toggleCard = (index) => {
   background-color: var(--cor-fundo-escuro);
   padding: 5rem 2rem;
   color: var(--cor-branca);
-  min-height: calc(100vh - 156.8px);
+  min-height: calc(100vh - 158.4px);
 }
 
 .section-title h2 {
@@ -143,7 +143,7 @@ const toggleCard = (index) => {
 
 .logo i {
   font-size: 4rem;
-  color: var(--cor-secundaria);
+  color: var(--cor-branca);
   transition: color 0.4s ease, text-shadow 0.4s ease;
   text-shadow: 0 0 6px rgba(72, 99, 252, 0.2);
 }
@@ -156,7 +156,7 @@ const toggleCard = (index) => {
 h3 {
   margin-top: 10px;
   font-size: var(--fonte-grande);
-  color: var(--cor-branca);
+  color: var(--cor-primaria);
   font-family: var(--fonte-primaria);
 }
 
@@ -166,9 +166,10 @@ h3 {
 }
 
 .descricao p {
-  font-size: var(--fonte-normal);
+  font-size: 1.8rem;
+  font-weight: 600;
+  line-height: 1.8;
   font-family: var(--fonte-secundaria);
-  line-height: 1.6;
   color: var(--cor-branca);
 }
 

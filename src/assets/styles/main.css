@@ -33,8 +33,8 @@
   --cor-fundo-escuro: #040203;
   --cor-fundo-cinza-escuro: #282828;
   --cor-fundo-cinza-claro: #353535;
-  --cor-fundo-header: linear-gradient(100deg, #0b0f2b 0%, #111827 100%);
-  --cor-fundo-footer: linear-gradient(180deg, #0b0f2b 0%, #111827 100%);
+  --cor-fundo-header: linear-gradient(0deg, #0b0f2b 20%, #000000 100%);
+  --cor-fundo-footer: linear-gradient(180deg, #0b0f2b 20%, #000000 100%);
   --cor-codelines-home: #00fff7;
   --cor-fundo-infoskills: linear-gradient(145deg, rgba(30,30,30,0.7), rgba(0, 0, 0, 0.5));
   --cor-hover-texto: var(--cor-secundaria);
@@ -69,30 +69,20 @@
   --cor-branca: #1e1e1e; /* Texto escuro, mas suave no tema claro */
 
   /* Fundos */
-  --cor-fundo-escuro: #f5f7fa;
+  --cor-fundo-escuro: #e5efff;
   --cor-fundo-cinza-escuro: #e0e6ed;
   --cor-fundo-cinza-claro: #f1f5fa;
 
-  --cor-fundo-header: linear-gradient(
-    245deg,
-    #4863fcb2,
-    rgba(226, 234, 255, 0.9) 50%,
-    #4863fcb2
-  );
+  --cor-fundo-header: linear-gradient(0deg, #fafafa 20%, #8395fd 150%);
 
-  --cor-fundo-footer: linear-gradient(
-    145deg,
-    #4863fcb2,
-    rgba(226, 234, 255, 0.9) 50%,
-    #4863fcb2
-  );
+  --cor-fundo-footer: linear-gradient(180deg, #fafafa 10%, #8395fd 150%);
 
   --cor-footer-shadow: rgba(0, 122, 204, 0.1);
   --cor-theme-darklight: #0026ff;
 
   /* Efeitos visuais e hover */
   --cor-hover-texto: var(--cor-secundaria);
-  --cor-hover-glow: rgba(0, 122, 204, 0.3);
+  --cor-hover-glow: rgba(0, 37, 124, 0.841);
   --cor-navlisthover: #4863fc;
 
   /* Código e blocos especiais */
