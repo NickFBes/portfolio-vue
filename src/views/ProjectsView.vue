@@ -29,8 +29,8 @@ const projetos = ref([
     id: 4,
     titulo: 'WeatherAPI',
     imagem: `${import.meta.env.BASE_URL}images/projet4.png`,
-    descricao: "Ce projet est une application web qui utilise la WeatherAPI pour afficher la météo actuelle dans n importe quelle ville. Développé avec HTML, CSS et JavaScript, le site permet aux utilisateurs de consulter des informations telles que la température et les conditions climatiques en temps réel. Il suffit d entrer le nom de la ville souhaitée pour obtenir des données mises à jour de manière simple et intuitive.",
-    link: 'https://nickfbes.github.io/app-previsao-do-tempo-main2/'
+    descricao: "Ce projet affiche la météo actuelle de votre région en utilisant votre géolocalisation. Il propose également un onglet de recherche qui permet d'obtenir les prévisions pour n'importe quelle autre ville dans le monde. Toutes les données sont récupérées en temps réel via une API météo. Le site a été développé entièrement en HTML, CSS et JavaScript pur, sans aucun framework.",
+    link: 'https://nickfbes.github.io/weather-api/'
   }
 ])
 
